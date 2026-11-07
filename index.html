@@ -280,7 +280,7 @@ const onUser=async u=>{
   else go();
 };auth.onAuthStateChanged(u=>{if(!signingUp)onUser(u)});
 function go(){if(started)return;started=true;
-  if(OS_ON){window.OneSignalDeferred=window.OneSignalDeferred||[];OneSignalDeferred.push(async O=>{try{await O.init({appId:OS_APP,serviceWorkerPath:'sw.js',serviceWorkerParam:{scope:location.pathname.replace(/[^/]*$/,'')}});window._O=O;await O.login(me)}catch(e){window._osErr=(e&&e.message)||String(e)}})}$('gate').style.display='none';
+  if(OS_ON){window.OneSignalDeferred=window.OneSignalDeferred||[];OneSignalDeferred.push(async O=>{try{await O.init({appId:OS_APP,serviceWorkerPath:location.pathname.replace(/[^/]*$/,'')+'sw.js',serviceWorkerParam:{scope:location.pathname.replace(/[^/]*$/,'')}});window._O=O;await O.login(me)}catch(e){window._osErr=(e&&e.message)||String(e)}})}$('gate').style.display='none';
   db.collection('calls').where('to','==',me).onSnapshot(sn=>sn.docChanges().forEach(ch=>{const d=ch.doc.data(),id=ch.doc.id;if(!d)return;
     if(d.state==='ringing'&&Date.now()-d.t<40000&&!pc&&!inc&&!blockedList().includes(d.from))showInc(id,d);
     else if(inc&&inc.id===id&&d.s===inc.d.s&&d.state!=='ringing'&&!pc)hideInc()}),()=>{});
