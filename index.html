@@ -3,6 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0f2744">
 <title>UK Love App</title>
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <link rel="manifest" href="manifest.json"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
 <style>
 :root{--bg:#f5f7fb;--hdr:#0f2744;--bar:#0e9f8e;--mine:#d8f3ee;--theirs:#fff;--t:#16202e;--mute:#6b7788;--line:#e3e8f0;--inb:#eef2f7}
@@ -41,18 +42,30 @@ form input[type=text]{flex:1;border:0;background:var(--inb);color:var(--t);borde
 #title{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}header button{padding:0 3px!important}
 #meb{width:32px;height:32px;border-radius:50%;background-color:#ffffff26;background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;font-size:16px;flex:none;border:2px solid #fff}
 #ft{text-align:center;font-size:12px;color:var(--mute);padding:6px 4px;flex:none;border-top:1px solid var(--line)}#gate #ft{border:0;margin-top:10px}
+svg{width:24px;height:24px;fill:currentColor}header button,.ib{display:flex;align-items:center}.ib{color:var(--mute)}#send svg{width:22px;height:22px}
+#tw{flex:1;min-width:0}#title{display:block}#tsub{font-size:12px;font-weight:400;opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#hs{display:flex}#cA{margin-left:auto}
+#calls,#set{flex:1;overflow-y:auto;display:none;background:var(--bg)}#sb{padding:8px 12px;background:var(--bg)}#q{width:100%;border:0;background:var(--inb);color:var(--t);border-radius:22px;padding:10px 16px;font-size:15px;outline:none}
+#tabs{display:flex;background:var(--theirs);border-top:1px solid var(--line)}#tabs button{flex:1;background:none;border:0;padding:8px 0 6px;color:var(--mute);font-size:11px;display:flex;flex-direction:column;align-items:center;gap:2px}#tabs button.on{color:var(--bar)}
+.m{-webkit-user-select:none;user-select:none}.n{font-weight:600}.ci{display:flex}
+.sh{padding:16px 16px 6px;font-size:12px;font-weight:700;color:var(--bar);text-transform:uppercase;letter-spacing:.5px}.sr{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;background:var(--theirs);border-bottom:1px solid var(--line)}
+.sb2,.sr select{background:var(--inb);color:var(--t);border:1px solid var(--line);border-radius:8px;padding:7px 12px;font-size:14px}.sw{width:34px;height:34px;border-radius:8px;border:2px solid var(--line);cursor:pointer;flex:none}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:50;display:none;align-items:flex-end;justify-content:center}.ov .sheet{background:var(--theirs);width:100%;max-width:480px;border-radius:16px 16px 0 0;padding:8px;max-height:80%;overflow:auto}.ov .sheet button{display:block;width:100%;background:none;border:0;padding:14px;font-size:16px;color:var(--t);text-align:center}.ov input[type=text]{width:100%;margin:6px 0;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--inb);color:var(--t);font-size:16px}
+#lb{align-items:center;background:rgba(0,0,0,.92)}#lb img{max-width:100%;max-height:100%}
+:root[data-theme=light]{--bg:#f5f7fb;--hdr:#0f2744;--bar:#0e9f8e;--mine:#d8f3ee;--theirs:#fff;--t:#16202e;--mute:#6b7788;--line:#e3e8f0;--inb:#eef2f7}:root[data-theme=dark]{--bg:#0e141b;--hdr:#0b1624;--bar:#14b8a6;--mine:#0f4a45;--theirs:#1a2430;--t:#e8edf3;--mute:#8b97a8;--line:#243040;--inb:#1a2430}
 #toast{position:fixed;top:60px;left:12px;right:12px;background:var(--hdr);color:#fff;padding:12px 16px;border-radius:12px;display:none;z-index:30}
 </style></head><body>
-<header><button id="back" hidden>←</button><div id="hav" class="av" hidden style="width:34px;height:34px"></div><span id="title">UK Love App ❤️</span><button id="cA" hidden>📞</button><button id="cV" hidden>📹</button><div id="meb" title="Profile photo">👤</div><input id="pf" type="file" accept="image/*" hidden><button id="fpb">👆</button><button id="out">⎋</button></header>
-<div id="list"></div>
+<header><button id="back" hidden>←</button><div id="hav" class="av" hidden style="width:34px;height:34px"></div><div id="tw"><span id="title">UK Love</span><div id="tsub"></div></div><button id="cA" hidden></button><button id="cV" hidden></button><span id="hs"><button id="rf"></button><button id="ng"></button></span><div id="meb" style="display:none"></div><input id="pf" type="file" accept="image/*" hidden><button id="fpb" style="display:none"></button><button id="out" style="display:none"></button></header>
+<div id="list"><div id="sb"><input id="q" placeholder="Search chats…"></div><div id="lr"></div></div><div id="calls"></div><div id="set"></div>
 <div id="chat"><div id="msgs"></div>
 <form id="f"><button type="button" class="ib" id="pic">📷</button><input id="file" type="file" accept="image/*" hidden><button type="button" class="ib" id="mic">🎤</button><input id="inp" type="text" placeholder="Message likho…" autocomplete="off"><button id="send" type="submit">➤</button></form></div>
+<nav id="tabs"><button class="on" data-t="chats"></button><button data-t="calls"></button><button data-t="set"></button></nav>
 <div id="gate"><h2>UK Love App ❤️</h2><div id="gt" style="text-align:center;font-weight:600">Login</div>
 <input id="gu" placeholder="Username" autocomplete="username" autocapitalize="none"><input id="gp" type="password" placeholder="Password" autocomplete="current-password">
 <button class="bt" id="gb">Login</button><button class="lk" id="gs">Naya account banao</button><button class="bt" id="gf" style="display:none">👆 Fingerprint se kholo</button><div id="gm"></div><div id="ft">This app made by UMAR RAJPOOT ❤️</div></div>
 <div id="ft">This app made by UMAR RAJPOOT ❤️</div>
 <div id="call"><video id="rv" autoplay playsinline></video><video id="lv" autoplay playsinline muted></video><div id="cn"><div id="cnn"></div><div id="cs"></div></div><div class="cb"><button id="cm">🎤</button><button id="ce" class="red">📵</button></div></div>
 <div id="inc"><div style="font-size:60px">📞</div><h2 id="in"></h2><div id="it"></div><div class="cb"><button id="ir" class="red">✖</button><button id="ia" class="grn">✔</button></div></div>
+<div class="ov" id="mn"></div><div class="ov" id="gm2"><div class="sheet"><b style="display:block;padding:8px">Naya Group</b><input type="text" id="gn" placeholder="Group ka naam"><div id="gl"></div><button id="gc" style="color:var(--bar);font-weight:700">Create group</button><button id="gx">Cancel</button></div></div><div class="ov" id="lb"><img id="lbi"></div><input type="file" id="wpf" accept="image/*" hidden>
 <div id="toast"></div>
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -70,9 +83,15 @@ const firebaseConfig = {
 const $=id=>document.getElementById(id),safe=f=>{try{return f()}catch(e){}};
 const LS={g:k=>safe(()=>localStorage.getItem(k)),s:(k,v)=>safe(()=>localStorage.setItem(k,v)),d:k=>safe(()=>localStorage.removeItem(k))};
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+const OS_APP="PASTE_HERE",OS_KEY="PASTE_HERE",OS_ON=OS_APP!=="PASTE_HERE"&&OS_KEY!=="PASTE_HERE";
+function push(to,title,body){if(!OS_ON||!to||!to.length)return;fetch('https://api.onesignal.com/notifications?c=push',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Key '+OS_KEY},body:JSON.stringify({app_id:OS_APP,target_channel:'push',include_aliases:{external_id:to},headings:{en:title},contents:{en:body},url:location.href})}).catch(()=>{})}
 firebase.initializeApp(firebaseConfig);
 const auth=firebase.auth(),db=firebase.firestore();
 let me,myName='',people={},unsub=null,cur='',curId='',t0=Date.now(),started=false,signup=false,fpOk=false;
+const sv=p=>'<svg viewBox="0 0 24 24"><path d="'+p+'"/></svg>';
+const I={back:sv('M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z'),phone:sv('M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z'),video:sv('M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z'),cam:sv('M12 8.8a3.2 3.2 0 100 6.4 3.2 3.2 0 000-6.4zM9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z'),mic:sv('M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z'),stop:sv('M6 6h12v12H6z'),send:sv('M2.01 21L23 12 2.01 3 2 10l15 2-15 2z'),ref:sv('M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z'),grp:sv('M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z'),chat:sv('M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z'),gear:sv('M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.488.488 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 00-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z')};
+$('back').innerHTML=I.back;$('cA').innerHTML=I.phone;$('cV').innerHTML=I.video;$('rf').innerHTML=I.ref;$('ng').innerHTML=I.grp;$('pic').innerHTML=I.cam;$('mic').innerHTML=I.mic;$('send').innerHTML=I.send;
+document.querySelectorAll('#tabs button').forEach((b,i)=>b.innerHTML=[I.chat+'<span>Chats</span>',I.phone+'<span>Calls</span>',I.gear+'<span>Settings</span>'][i]);
 function setAv(el,p,n){if(p){el.style.backgroundImage='url('+p+')';el.style.backgroundSize='cover';el.style.backgroundPosition='center';el.textContent=''}else{el.style.backgroundImage='';el.textContent=ini(n)}}
 function setMe(){const p=(people[me]||{}).photo,m=$('meb');m.style.backgroundImage=p?'url('+p+')':'';m.textContent=p?'':'👤'}
 const ini=n=>(n||'?').charAt(0).toUpperCase(),mail=u=>u.toLowerCase().replace(/[^a-z0-9._-]/g,'')+'@ukloveapp.app';
@@ -103,38 +122,92 @@ auth.onAuthStateChanged(async u=>{
     if(await tryFp(fp))go();else $('gm').textContent='Fingerprint nahi chala. Button dabao.'}
   else go();
 });
-function go(){if(started)return;started=true;$('gate').style.display='none';
+function go(){if(started)return;started=true;
+  if(OS_ON){window.OneSignalDeferred=window.OneSignalDeferred||[];OneSignalDeferred.push(async O=>{try{await O.init({appId:OS_APP,serviceWorkerPath:'sw.js',serviceWorkerParam:{scope:location.pathname.replace(/[^/]*$/,'')}});await O.login(me);O.Notifications.requestPermission()}catch(e){}})}$('gate').style.display='none';
   db.collection('calls').where('to','==',me).onSnapshot(sn=>sn.docChanges().forEach(ch=>{const d=ch.doc.data(),id=ch.doc.id;if(!d)return;
     if(d.state==='ringing'&&Date.now()-d.t<40000&&!pc&&!inc)showInc(id,d);
     else if(inc&&inc.id===id&&d.s===inc.d.s&&d.state!=='ringing'&&!pc)hideInc()}),()=>{});
   safe(()=>window.Notification&&Notification.permission==='default'&&Notification.requestPermission());
-  db.collection('users').onSnapshot(s=>{people={};s.docs.forEach(d=>people[d.id]=d.data());myName=(people[me]||{}).name||'';setMe();if($('list').style.display!=='none')renderList()});
+  db.collection('users').onSnapshot(s=>{people={};s.docs.forEach(d=>people[d.id]=d.data());myName=(people[me]||{}).name||'';setMe();subline();renderList()});
   db.collection('last').onSnapshot(s=>s.docChanges().forEach(c=>{const m=c.doc.data(),id=c.doc.id;
-    if(c.type==='removed'||m.u===me||m.t<t0||id===cur)return;if(id==='all'||id.split('_').includes(me))notify(m.n,m.x)}));
-  renderList()}
+    if(c.type==='removed'||m.u===me||m.t<t0||id===cur)return;if(id.startsWith('g_')?!!groups[id.slice(2)]:id.split('_').includes(me))notify(m.n,m.x)}));
+  db.collection('groups').where('members','array-contains',me).onSnapshot(s=>{groups={};s.docs.forEach(d=>groups[d.id]=d.data());renderList()},()=>{});
+  const mc=s=>{s.docs.forEach(d=>cl[d.id]=d.data());if(tab==='calls')renderCalls()};db.collection('callog').where('from','==',me).onSnapshot(mc,()=>{});db.collection('callog').where('to','==',me).onSnapshot(mc,()=>{});
+  const beat=()=>{if(!cfg.hideSeen&&!document.hidden)db.collection('users').doc(me).set({seen:Date.now()},{merge:true}).catch(()=>{})};beat();setInterval(beat,30000);document.addEventListener('visibilitychange',beat);
+  renderList();applyCfg()}
 
 /* ---------- List & Chat ---------- */
-function show(l){$('hav').hidden=l;$('cA').hidden=$('cV').hidden=l;$('cA').style.marginLeft='auto';$('fpb').style.marginLeft=l?'auto':'0';$('list').style.display=l?'block':'none';$('chat').style.display=l?'none':'flex';$('back').hidden=l;if(l)$('title').textContent='UK Love App ❤️'}
-function renderList(){const l=$('list');l.textContent='';
-  const add=(id,n,sub)=>{const r=document.createElement('div');r.className='row';r.innerHTML='<div class="av"></div><div><div class="n"></div><div class="sub"></div></div>';
-    setAv(r.querySelector('.av'),(people[id]||{}).photo,n);r.querySelector('.n').textContent=n;r.querySelector('.sub').textContent=sub;r.onclick=()=>openChat(id,n);l.appendChild(r)};
-  Object.entries(people).filter(([k])=>k!==me).forEach(([k,v])=>add(k,v.name||'User','Private chat'));
-  if(Object.keys(people).length<2)l.insertAdjacentHTML('beforeend','<div class="note">Doston ko app do — jab wo account banayenge, yahan nazar aayenge.</div>')}
+function show(l){$('hav').hidden=l;$('cA').hidden=$('cV').hidden=l||isG;$('back').hidden=l;$('tabs').style.display=l?'flex':'none';$('chat').style.display=l?'none':'flex';$('hs').style.display=l?'flex':'none';$('ng').style.display=tab==='chats'?'flex':'none';
+  ['list','calls','set'].forEach(x=>$(x).style.display=(l&&({list:'chats',calls:'calls',set:'set'}[x]===tab))?'block':'none');if(l){$('title').textContent={chats:'UK Love',calls:'Calls',set:'Settings'}[tab];$('tsub').textContent=''}}
+let isG=false,tab='chats',groups={},cl={},callMeta=null,tpT=0,lt=0;
+const seenTxt=u=>{if(!u||!u.seen)return '';if(Date.now()-u.seen<75000)return 'Online';const t=new Date(u.seen);return 'Last seen '+(new Date().toDateString()===t.toDateString()?'today':t.toLocaleDateString([],{day:'numeric',month:'short'}))+' '+t.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})};
+function subline(){if(!cur)return;const e=$('tsub');if(tpT&&Date.now()-tpT<5000){e.textContent='typing…';return}
+  if(isG){const g=groups[cur.slice(2)];e.textContent=g?g.members.map(x=>(people[x]||{}).name||'').filter(Boolean).join(', '):'';return}e.textContent=seenTxt(people[curId])}
+setInterval(subline,4000);
+function renderList(){const l=$('lr');l.textContent='';const q=($('q').value||'').toLowerCase();
+  const add=(id,n,sub,p,g)=>{if(q&&!n.toLowerCase().includes(q))return;const r=document.createElement('div');r.className='row';r.innerHTML='<div class="av"></div><div style="min-width:0"><div class="n"></div><div class="sub"></div></div>';
+    const av=r.querySelector('.av');if(g)av.innerHTML=I.grp;else setAv(av,p,n);r.querySelector('.n').textContent=n;const sb=r.querySelector('.sub');sb.textContent=sub;if(sub==='Online')sb.style.color='#16a34a';r.onclick=()=>openChat(id,n);l.appendChild(r)};
+  Object.entries(groups).forEach(([k,g])=>add('g_'+k,g.name,g.members.length+' members',null,true));
+  Object.entries(people).filter(([k])=>k!==me).forEach(([k,v])=>add(k,v.name||'User',seenTxt(v)||'Private chat',v.photo));
+  if(!l.children.length)l.innerHTML='<div class="note">Koi chat nahi mili. Doston ko app do, ya 👥 se group banao.</div>'}
+$('q').oninput=renderList;
 function openChat(id,name){
-  cur=id==='all'?'all':[me,id].sort().join('_');curId=id;$('title').textContent=name;show(false);setAv($('hav'),(people[id]||{}).photo,name);$('msgs').textContent='';
-  if(unsub)unsub();
-  unsub=db.collection('chats/'+cur+'/messages').orderBy('t').limitToLast(150).onSnapshot(s=>{
+  isG=id.startsWith('g_');cur=isG?id:[me,id].sort().join('_');curId=id;tpT=0;$('title').textContent=name;show(false);
+  setAv($('hav'),isG?null:(people[id]||{}).photo,name);if(isG)$('hav').innerHTML=I.grp;$('msgs').textContent='';if(unsub)unsub();subline();
+  const u1=db.collection('chats/'+cur+'/messages').orderBy('t').limitToLast(200).onSnapshot(s=>{
     const box=$('msgs');box.textContent='';
-    s.docs.forEach(d=>{const m=d.data(),el=document.createElement('div');el.className='m'+(m.u===me?' me':'');
-      if(id==='all'&&m.u!==me){const b=document.createElement('b');b.textContent=(people[m.u]||{}).name||'User';el.appendChild(b)}
-      if(m.k==='img'){const i=document.createElement('img');i.src=m.d;el.appendChild(i)}
-      else if(m.k==='aud'){const a=document.createElement('audio');a.controls=true;a.src=m.d;el.appendChild(a)}
-      else el.appendChild(document.createTextNode(m.x||''));
-      const sm=document.createElement('small');sm.textContent=new Date(m.t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});el.appendChild(sm);box.appendChild(el)});
-    box.scrollTop=box.scrollHeight},()=>{$('msgs').textContent='Messages load nahi huay.'})}
+    s.docs.forEach(d=>{const m=d.data();if(m['h_'+me])return;const el=document.createElement('div');el.className='m'+(m.u===me?' me':'');
+      if(m.del){el.textContent='🚫 Ye message delete kar diya gaya';el.style.opacity=.6;el.style.fontStyle='italic'}
+      else{if(isG&&m.u!==me){const b=document.createElement('b');b.textContent=(people[m.u]||{}).name||'User';el.appendChild(b)}
+        if(m.k==='img'){const i=document.createElement('img');i.src=m.d;i.onclick=()=>{$('lbi').src=m.d;$('lb').style.display='flex'};el.appendChild(i)}
+        else if(m.k==='aud'){const a=document.createElement('audio');a.controls=true;a.src=m.d;el.appendChild(a)}
+        else el.appendChild(document.createTextNode(m.x||''))}
+      const sm=document.createElement('small');sm.textContent=new Date(m.t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});el.appendChild(sm);
+      let tt;el.ontouchstart=()=>{tt=setTimeout(()=>menu(d.id,m),550)};el.ontouchend=el.ontouchmove=()=>clearTimeout(tt);el.oncontextmenu=ev=>{ev.preventDefault();menu(d.id,m)};
+      box.appendChild(el)});box.scrollTop=box.scrollHeight},()=>{$('msgs').textContent='Messages load nahi huay.'});
+  const u2=db.doc('typing/'+cur).onSnapshot(sn=>{const d=sn.data();tpT=d&&d.u!==me?d.t:0;subline()});unsub=()=>{u1();u2()}}
+function menu(id,m){const b=$('mn');if(b.style.display==='flex')return;b.innerHTML='<div class="sheet"></div>';const sh=b.firstChild,ref=db.doc('chats/'+cur+'/messages/'+id);
+  const add=(t,f,red)=>{const x=document.createElement('button');x.textContent=t;if(red)x.style.color='#e03131';x.onclick=()=>{b.style.display='none';if(f)f()};sh.appendChild(x)};
+  add('Delete for me',()=>ref.update({['h_'+me]:true}),1);if(m.u===me&&!m.del)add('Delete for everyone',()=>ref.update({del:true,x:'',d:firebase.firestore.FieldValue.delete()}),1);add('Cancel');b.style.display='flex'}
+$('mn').onclick=e=>{if(e.target.id==='mn')$('mn').style.display='none'};$('lb').onclick=()=>$('lb').style.display='none';
+$('inp').addEventListener('input',()=>{if(cur&&Date.now()-lt>2500){lt=Date.now();db.doc('typing/'+cur).set({u:me,t:lt}).catch(()=>{})}});
+$('rf').onclick=()=>location.reload();
+$('ng').onclick=()=>{$('gm2').style.display='flex';const L=$('gl');L.textContent='';$('gn').value='';
+  Object.entries(people).filter(([k])=>k!==me).forEach(([k,v])=>{const lb=document.createElement('label');lb.className='row';lb.innerHTML='<input type="checkbox" value="'+k+'"><span></span>';lb.querySelector('span').textContent=v.name||'User';L.appendChild(lb)})};
+$('gc').onclick=async()=>{const n=$('gn').value.trim(),m=[...$('gl').querySelectorAll('input:checked')].map(x=>x.value);if(!n||!m.length){alert('Group ka naam likho aur kam az kam ek dost chuno.');return}
+  try{await db.collection('groups').add({name:n,members:[me,...m],by:me,t:Date.now()});$('gm2').style.display='none'}catch(e){alert('Group nahi bana.')}};
+$('gx').onclick=()=>$('gm2').style.display='none';
+document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.t;document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on',x===b));show(true);if(tab==='calls')renderCalls();if(tab==='set')renderSet();if(tab==='chats')renderList()});
+function renderCalls(){const l=$('calls');l.textContent='';const a=Object.values(cl).sort((x,y)=>y.t-x.t);if(!a.length){l.innerHTML='<div class="note">Abhi koi call nahi.</div>';return}
+  a.forEach(c=>{const out=c.from===me,o=out?c.to:c.from,p=people[o]||{},miss=c.st!=='ok',r=document.createElement('div');r.className='row';r.innerHTML='<div class="av"></div><div style="flex:1;min-width:0"><div class="n"></div><div class="sub"></div></div><span class="ci"></span>';
+    setAv(r.querySelector('.av'),p.photo,p.name);const n=r.querySelector('.n');n.textContent=p.name||'User';if(miss&&!out)n.style.color='#e03131';
+    r.querySelector('.sub').textContent=(out?'↗ Outgoing':'↙ Incoming')+' · '+(miss?(c.st==='rej'?'Rejected':'Missed'):Math.floor(c.dur/60)+'m '+c.dur%60+'s')+' · '+new Date(c.t).toLocaleString([],{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+    const ci=r.querySelector('.ci');ci.innerHTML=c.video?I.video:I.phone;ci.style.color='var(--bar)';r.onclick=()=>openChat(o,p.name||'User');l.appendChild(r)})}
+/* ---------- Settings ---------- */
+const T=[['Classic',[[880,.15]]],['Bell',[[1320,.1],[990,.25]]],['Pop',[[600,.08],[900,.1]]],['Chime',[[523,.12],[659,.12],[784,.25]]],['Soft',[[440,.35]]],['Alert',[[800,.1],[800,.1],[800,.1]]],['Ring',[[660,.25],[880,.25],[660,.25],[880,.25]]]];
+let cfg=Object.assign({tone:0,ring:6,vib:true,notif:true,wp:'',theme:'auto',hideSeen:false},safe(()=>JSON.parse(LS.g('ukcfg')))||{});
+const saveCfg=()=>{LS.s('ukcfg',JSON.stringify(cfg));applyCfg()};
+function applyCfg(){const w=cfg.wp==='img'?'url('+LS.g('ukwp')+') center/cover':cfg.wp;$('msgs').style.background=w||'';if(cfg.theme==='auto')document.documentElement.removeAttribute('data-theme');else document.documentElement.dataset.theme=cfg.theme}
+function playTone(i){safe(()=>{const c=new (window.AudioContext||window.webkitAudioContext)();let t=c.currentTime;(T[i]||T[0])[1].forEach(([f,d])=>{const o=c.createOscillator(),g=c.createGain();o.frequency.value=f;o.connect(g);g.connect(c.destination);g.gain.setValueAtTime(.3,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.start(t);o.stop(t+d);t+=d+.03})})}
+function renderSet(){const S=$('set');S.textContent='';
+  const sec=t=>{const h=document.createElement('div');h.className='sh';h.textContent=t;S.appendChild(h)};
+  const row=(t,c)=>{const e=document.createElement('div');e.className='sr';const a=document.createElement('span');a.textContent=t;e.appendChild(a);if(c)e.appendChild(c);S.appendChild(e);return e};
+  const btn=(t,f)=>{const b=document.createElement('button');b.className='sb2';b.textContent=t;b.onclick=f;return b};
+  const sel=(o,v,f)=>{const s=document.createElement('select');o.forEach(([k,t])=>{const e=document.createElement('option');e.value=k;e.textContent=t;if(String(k)===String(v))e.selected=true;s.appendChild(e)});s.onchange=()=>f(s.value);return s};
+  const tog=(k,f)=>{const c=document.createElement('input');c.type='checkbox';c.checked=!!cfg[k];c.onchange=()=>{cfg[k]=c.checked;saveCfg();if(f)f()};return c};
+  const tn=T.map((t,i)=>[i,t[0]]);
+  sec('Profile');row('Profile photo',btn('Badlo',()=>$('meb').click()));row('Naam: '+(myName||''),btn('Edit',()=>{const n=prompt('Naya naam',myName);if(n&&n.trim().length>=3)db.collection('users').doc(me).set({name:n.trim()},{merge:true})}));
+  sec('Sounds & Notifications');row('Message tone',sel(tn,cfg.tone,v=>{cfg.tone=+v;saveCfg();playTone(cfg.tone)}));row('Call ringtone',sel(tn,cfg.ring,v=>{cfg.ring=+v;saveCfg();playTone(cfg.ring)}));row('Vibration',tog('vib'));row('Notifications',tog('notif'));
+  sec('Chat wallpaper');const w=row('');const WP=['','#e8f5e9','#fff3e0','#e3f2fd','#fce4ec','#263238','linear-gradient(160deg,#0f2744,#0e9f8e)','linear-gradient(160deg,#ff9a9e,#fad0c4)'];
+  w.style.flexWrap='wrap';WP.forEach(c=>{const d=document.createElement('div');d.className='sw';d.style.background=c||'var(--bg)';d.onclick=()=>{cfg.wp=c;saveCfg()};w.appendChild(d)});
+  row('Apni photo lagao',btn('Gallery',()=>$('wpf').click()));
+  sec('Display');row('Theme',sel([['auto','Auto'],['light','Light'],['dark','Dark']],cfg.theme,v=>{cfg.theme=v;saveCfg()}));
+  sec('Privacy & Security');row('Online / last seen chhupao',tog('hideSeen',()=>{if(cfg.hideSeen)db.collection('users').doc(me).set({seen:0},{merge:true})}));row('Fingerprint lock',btn('On / Off',()=>$('fpb').click()));
+  sec('Account');row('Logout',btn('Logout',()=>$('out').click()));row('This app made by UMAR RAJPOOT ❤️')}
+$('wpf').onchange=e=>{const f=e.target.files[0];e.target.value='';if(!f)return;const im=new Image();im.onload=()=>{const sc=Math.min(1,900/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*sc;c.height=im.height*sc;c.getContext('2d').drawImage(im,0,0,c.width,c.height);LS.s('ukwp',c.toDataURL('image/jpeg',.6));cfg.wp='img';saveCfg()};im.src=URL.createObjectURL(f)};
 $('back').onclick=()=>{if(unsub)unsub();unsub=null;cur='';show(true)};
 async function post(o){try{const t=Date.now();await db.collection('chats/'+cur+'/messages').add({u:me,t,...o});
-  await db.doc('last/'+cur).set({u:me,t,n:myName||'Friend',x:o.k==='img'?'📷 Photo':o.k==='aud'?'🎤 Voice note':o.x})}catch(e){alert('Send nahi hua. Internet check karo.')}}
+  push(isG?((groups[cur.slice(2)]||{members:[]}).members.filter(x=>x!==me)):[curId],myName||'UK Love',o.k==='img'?'📷 Photo':o.k==='aud'?'🎤 Voice note':o.x);await db.doc('last/'+cur).set({u:me,t,n:myName||'Friend',x:o.k==='img'?'📷 Photo':o.k==='aud'?'🎤 Voice note':o.x})}catch(e){alert('Send nahi hua. Internet check karo.')}}
 $('f').onsubmit=e=>{e.preventDefault();const x=$('inp').value.trim();if(!x)return;$('inp').value='';post({x})};
 
 /* ---------- Profile photo ---------- */
@@ -153,27 +226,27 @@ let mr=null,ch=[],tm=null;
 $('mic').onclick=async()=>{if(mr){mr.stop();return}
   try{const st=await navigator.mediaDevices.getUserMedia({audio:true});mr=new MediaRecorder(st,{audioBitsPerSecond:24000});ch=[];
     mr.ondataavailable=e=>ch.push(e.data);
-    mr.onstop=()=>{clearTimeout(tm);st.getTracks().forEach(t=>t.stop());$('mic').classList.remove('rec');$('mic').textContent='🎤';const bl=new Blob(ch,{type:mr.mimeType||'audio/webm'});mr=null;
+    mr.onstop=()=>{clearTimeout(tm);st.getTracks().forEach(t=>t.stop());$('mic').classList.remove('rec');$('mic').innerHTML=I.mic;const bl=new Blob(ch,{type:mr.mimeType||'audio/webm'});mr=null;
       if(bl.size<500)return;const r=new FileReader();r.onload=()=>{if(r.result.length>900000)alert('Voice note bohat lamba hai.');else post({k:'aud',d:r.result})};r.readAsDataURL(bl)};
-    mr.start();tm=setTimeout(()=>mr&&mr.stop(),40000);$('mic').classList.add('rec');$('mic').textContent='⏹️'}
+    mr.start();tm=setTimeout(()=>mr&&mr.stop(),40000);$('mic').classList.add('rec');$('mic').innerHTML=I.stop}
   catch(e){alert('Mic ki ijazat nahi mili.')}};
 
 /* ---------- Calls (WebRTC) ---------- */
 const ICE={iceServers:[{urls:'stun:stun.l.google.com:19302'},{urls:'stun:stun1.l.google.com:19302'},{urls:['turn:openrelay.metered.ca:80','turn:openrelay.metered.ca:443','turn:openrelay.metered.ca:443?transport=tcp'],username:'openrelayproject',credential:'openrelayproject'}]};
 let pc=null,ls=null,cs=0,cid2='',cu=[],qc=[],inc=null,ringIv=null;
-const beep=()=>safe(()=>{const c=new (window.AudioContext||window.webkitAudioContext)(),o=c.createOscillator();o.connect(c.destination);o.frequency.value=660;o.start();o.stop(c.currentTime+.4)});
+const beep=()=>playTone(cfg.ring);
 const media=v=>navigator.mediaDevices.getUserMedia({audio:true,video:v?{facingMode:'user'}:false});
 function callUI(name,st,v){$('call').style.display='flex';$('cnn').textContent=name;$('cs').textContent=st;$('lv').style.display=v?'block':'none';$('lv').srcObject=ls;$('cm').textContent='🎤'}
 async function addCand(c){const x=JSON.parse(c);if(pc&&pc.remoteDescription){try{await pc.addIceCandidate(x)}catch(e){}}else qc.push(x)}
 async function flush(){for(const c of qc){try{await pc.addIceCandidate(c)}catch(e){}}qc=[]}
 function mkpc(c){
   pc=new RTCPeerConnection(ICE);qc=[];ls.getTracks().forEach(t=>pc.addTrack(t,ls));
-  pc.ontrack=e=>{$('rv').srcObject=e.streams[0];$('cs').textContent='Connected ✅'};
+  pc.ontrack=e=>{if(callMeta&&!callMeta.conn){callMeta.conn=true;callMeta.ct=Date.now()}$('rv').srcObject=e.streams[0];$('cs').textContent='Connected ✅'};
   pc.onicecandidate=e=>{if(e.candidate)db.collection('calls/'+c+'/cand').add({u:me,s:cs,c:JSON.stringify(e.candidate)}).catch(()=>{})};
   pc.onconnectionstatechange=()=>{if(pc&&pc.connectionState==='failed')$('cs').textContent='Connection nahi ban saka (network)'};
   cu.push(db.collection('calls/'+c+'/cand').onSnapshot(s=>s.docChanges().forEach(ch=>{if(ch.type!=='added')return;const d=ch.doc.data();if(d.u!==me&&d.s===cs)addCand(d.c)})))}
 async function startCall(v){
-  if(!curId||pc)return;const c=cur;cid2=c;cs=Date.now();
+  if(!curId||pc||isG)return;const c=cur;cid2=c;cs=Date.now();callMeta={to:curId,v:!!v,t0:Date.now(),conn:false};
   try{ls=await media(v)}catch(e){alert('Mic ya Camera ki ijazat nahi mili.');return}
   callUI($('title').textContent,'Calling…',v);mkpc(c);
   const o=await pc.createOffer();await pc.setLocalDescription(o);
@@ -192,14 +265,13 @@ $('ia').onclick=async()=>{const {id,d}=inc;hideInc();cid2=id;cs=d.s;
   cu.push(db.doc('calls/'+id).onSnapshot(s=>{const x=s.data();if(x&&x.s===cs&&x.state==='ended')endLocal('Call khatam')}))};
 $('ir').onclick=()=>{const id=inc.id;hideInc();db.doc('calls/'+id).update({state:'rejected'}).catch(()=>{})};
 function hang(){if(cid2)db.doc('calls/'+cid2).update({state:'ended'}).catch(()=>{});endLocal('')}
-function endLocal(msg){cu.forEach(f=>f());cu=[];if(pc){pc.close();pc=null}if(ls){ls.getTracks().forEach(t=>t.stop());ls=null}
+function endLocal(msg){if(callMeta){const k=callMeta;callMeta=null;db.collection('callog').add({from:me,to:k.to,video:k.v,t:k.t0,dur:k.conn?Math.round((Date.now()-k.ct)/1000):0,st:k.conn?'ok':(msg==='Call reject hui'?'rej':'miss')}).catch(()=>{})}cu.forEach(f=>f());cu=[];if(pc){pc.close();pc=null}if(ls){ls.getTracks().forEach(t=>t.stop());ls=null}
   $('call').style.display='none';$('rv').srcObject=null;$('lv').srcObject=null;cid2='';if(msg){const t=$('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',3000)}}
 $('ce').onclick=hang;$('cA').onclick=()=>startCall(false);$('cV').onclick=()=>startCall(true);
 $('cm').onclick=()=>{if(!ls)return;const t=ls.getAudioTracks()[0];if(t){t.enabled=!t.enabled;$('cm').textContent=t.enabled?'🎤':'🔇'}};
 
 /* ---------- Notification (app khuli ho tab) ---------- */
-function notify(n,x){const t=$('toast');t.textContent='💗 '+n+': '+x;t.style.display='block';setTimeout(()=>t.style.display='none',4000);
-  safe(()=>navigator.vibrate&&navigator.vibrate(200));
-  safe(()=>{const c=new (window.AudioContext||window.webkitAudioContext)(),o=c.createOscillator();o.connect(c.destination);o.frequency.value=880;o.start();o.stop(c.currentTime+.15)});
+function notify(n,x){if(cfg.notif===false)return;const t=$('toast');t.textContent='💬 '+n+': '+x;t.style.display='block';setTimeout(()=>t.style.display='none',4000);
+  safe(()=>cfg.vib&&navigator.vibrate&&navigator.vibrate(200));playTone(cfg.tone);
   safe(()=>{if(document.hidden&&window.Notification&&Notification.permission==='granted')new Notification('UK Love App',{body:n+': '+x})})}
 </script></body></html>
