@@ -158,6 +158,25 @@ header,form,#tabs,#blk,body>#ft{flex:none}#chat{min-height:0}#msgs{min-height:0;
 #csb{flex:none;display:flex;align-items:center;gap:8px;padding:8px 10px;background:#14061f;border-bottom:1px solid #ff4fb544}#csb input{flex:1;min-width:0;background:var(--inb);color:#fff;border:1px solid #ff4fb544;border-radius:20px;padding:9px 14px;font-size:15px;outline:none}#csb button{background:none;border:0;color:#fff;font-size:20px;padding:2px 6px;opacity:.6}#csb button.on{opacity:1}
 #emo{flex:none;max-height:210px;overflow-y:auto;display:grid;grid-template-columns:repeat(8,1fr);gap:2px;padding:8px;background:#14061f;border-top:1px solid #ff4fb544}#emo button{background:none;border:0;font-size:26px;padding:4px}
 body>#ft span{white-space:nowrap;font-size:15px}body>#ft{gap:8px}
+/* ====== Compact sizes ====== */
+body{font-size:15px}
+header{padding:9px 12px;font-size:17px}header button{width:36px;height:36px}header button svg{width:22px;height:22px}
+header.home{padding:calc(env(safe-area-inset-top,0px) + 8px) 14px 12px;border-radius:0 0 26px 26px}
+#brand{gap:6px}#brand i{width:46px;height:42px}#brand b{font-size:30px}#brand em{font-size:32px}#brand span{padding-bottom:9px;gap:4px}#brand span:after{height:9px}
+header.home #rf{width:42px;height:42px}header.home #rf svg{width:22px;height:22px}
+#sb{padding:10px 14px 4px}#q{height:46px;font-size:16px;padding:0 66px 0 46px;border-radius:26px;background-position:16px 50%;background-size:20px}
+#sb #ng.fab{width:50px;height:38px;right:20px;border-radius:24px}#sb #ng.fab svg{width:22px;height:22px}
+.row{margin:8px 12px;padding:10px 32px 10px 12px;gap:12px;border-radius:22px}
+.row .av{width:52px;height:52px;font-size:20px;box-shadow:0 0 0 2px #ff4fb5,0 0 12px #ff4fb577}
+.row .n{font-size:17px;line-height:1.2;white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere}
+.row .sub{font-size:14px;margin-top:2px}.row .rm{font-size:12px;margin-top:2px;white-space:nowrap}
+.dot{width:15px;height:15px;border-width:2px;right:-2px;bottom:-1px}
+.row:after{font-size:30px;right:10px}.bd{right:34px;bottom:10px;min-width:22px;height:22px;font-size:12px;line-height:22px;border-radius:11px;padding:0 6px}
+#tabs{margin:4px 8px 0;padding:4px;border-radius:26px}#tabs button{padding:6px 0 4px;font-size:12px;border-radius:20px;gap:2px}#tabs svg{width:26px;height:26px}
+body>#ft{font-size:13px;padding:9px 12px 11px;margin-top:6px;border-radius:26px 26px 0 0;gap:8px}body>#ft span{font-size:13px}
+.m{font-size:15px;padding:7px 11px}#msgs{padding:10px;gap:5px}form{padding:6px 8px;gap:6px}form input[type=text]{padding:10px 14px;font-size:15px}#send{width:42px;height:42px}
+#title{font-size:17px}#tsub{font-size:11px}.av{font-size:16px}
+.sr,.si{font-size:14px}.sr .st b{font-size:14px}.pn{font-size:18px}.cd{margin:0 12px}
 </style></head><body>
 <header><div id="brand"><i></i><span><b>UK</b><em>Love</em></span></div><button id="back" hidden>←</button><div id="hav" class="av" hidden style="width:34px;height:34px"></div><div id="tw"><span id="title">UK Love</span><div id="tsub"></div></div><button id="cS" hidden></button><button id="cA" hidden></button><button id="cV" hidden></button><span id="hs"><button id="rf"></button><button id="ng"></button></span><div id="meb" style="display:none"></div><input id="pf" type="file" accept="image/*" hidden><button id="fpb" style="display:none"></button><button id="out" style="display:none"></button></header>
 <div id="list"><div id="sb"><input id="q" placeholder="Search chats…"></div><div id="lr"></div></div><div id="stv"></div><div id="calls"></div><div id="set"></div>
