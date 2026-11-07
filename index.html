@@ -3,6 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <meta name="theme-color" content="#1c0626">
 <title>UK Love App</title>
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <link rel="manifest" href="manifest.json"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
 <style>
 :root{--bg:#f5f7fb;--hdr:#0f2744;--bar:#0e9f8e;--mine:#d8f3ee;--theirs:#fff;--t:#16202e;--mute:#6b7788;--line:#e3e8f0;--inb:#eef2f7}
@@ -215,8 +216,8 @@ function pushLayer(f){layers.push(f);hsync()}
 function closeLayer(f){const i=layers.lastIndexOf(f);if(i<0)return;layers.splice(i,1);hsync()}
 window.addEventListener('popstate',()=>{if(hbusy){hbusy=false;hsync();return}depth=Math.max(0,depth-1);const f=layers.pop();if(f)f();hsync()});
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
-const OS_APP="PASTE_HERE",OS_KEY="PASTE_HERE",OS_ON=OS_APP!=="PASTE_HERE"&&OS_KEY!=="PASTE_HERE";
-function push(to,title,body){if(!OS_ON||!to||!to.length)return;fetch('https://api.onesignal.com/notifications?c=push',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Key '+OS_KEY},body:JSON.stringify({app_id:OS_APP,target_channel:'push',include_aliases:{external_id:to},headings:{en:title},contents:{en:body},url:location.href})}).catch(()=>{})}
+const OS_APP="99e6aa1b-64bd-41f6-a87f-90c0e392d005",PUSH_URL="https://uklove-push.umardrazofficial12.workers.dev",OS_ON=OS_APP!=="PASTE_HERE";
+function push(to,title,body,ex){if(PUSH_URL===""||!to||!to.length||!auth.currentUser)return;auth.currentUser.getIdToken().then(t=>fetch(PUSH_URL,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+t},body:JSON.stringify({to,title,body,call:!!(ex&&ex.priority)})})).catch(()=>{})}
 firebase.initializeApp(firebaseConfig);
 const auth=firebase.auth(),db=firebase.firestore();
 db.enablePersistence({synchronizeTabs:true}).catch(()=>{});
@@ -552,6 +553,7 @@ async function startCall(v){
   callUI($('title').textContent,'Calling…',v);startRing();mkpc(c);
   const o=await pc.createOffer();await pc.setLocalDescription(o);
   await db.doc('calls/'+c).set({from:me,to:curId,fn:myName||'Friend',video:!!v,state:'ringing',offer:{type:o.type,sdp:o.sdp},answer:null,s:cs,t:Date.now()});
+  push([curId],myName||'UK Love',v?'📹 Incoming video call':'📞 Incoming voice call',{priority:10,ttl:45});
   cu.push(db.doc('calls/'+c).onSnapshot(async s=>{const d=s.data();if(!d||d.s!==cs||!pc)return;
     if(d.answer&&!pc.currentRemoteDescription){await pc.setRemoteDescription(d.answer);await flush();stopRing();if(!ctStart)$('cs').textContent='Connecting…'}
     if(d.state==='ended'||d.state==='rejected')endLocal(d.state==='rejected'?'Call rejected':'Call ended')}));
