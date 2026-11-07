@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#d6336c">
+<meta name="theme-color" content="#0f2744">
 <title>UK Love App</title>
 <link rel="manifest" href="manifest.json"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
 <style>
-:root{--bg:#fff;--bar:#d6336c;--mine:#ffd6e5;--theirs:#f1f1f4;--t:#1c1c22;--mute:#777;--line:#e6e6ea;--inb:#f4f4f7}
-@media (prefers-color-scheme:dark){:root{--bg:#15151a;--bar:#a8265a;--mine:#6b2145;--theirs:#26262e;--t:#f2f2f5;--mute:#9a9aa5;--line:#2e2e38;--inb:#26262e}}
+:root{--bg:#f5f7fb;--hdr:#0f2744;--bar:#0e9f8e;--mine:#d8f3ee;--theirs:#fff;--t:#16202e;--mute:#6b7788;--line:#e3e8f0;--inb:#eef2f7}
+@media (prefers-color-scheme:dark){:root{--bg:#0e141b;--hdr:#0b1624;--bar:#14b8a6;--mine:#0f4a45;--theirs:#1a2430;--t:#e8edf3;--mute:#8b97a8;--line:#243040;--inb:#1a2430}}
 *{box-sizing:border-box}html,body{height:100%;margin:0}
 body{background:var(--bg);color:var(--t);font:16px system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden;padding-top:env(safe-area-inset-top,0);padding-bottom:env(safe-area-inset-bottom,0)}
-header{background:var(--bar);color:#fff;padding:14px 16px;font-weight:700;font-size:19px;display:flex;align-items:center;gap:10px}
+header{background:var(--hdr);color:#fff;padding:12px 14px;font-weight:600;font-size:18px;letter-spacing:.2px;box-shadow:0 2px 8px rgba(0,0,0,.18);z-index:5;display:flex;align-items:center;gap:10px}
 header button{background:none;border:0;color:#fff;font-size:22px;padding:0 6px}
 #fpb,#out{margin-left:auto}#fpb+#out{margin-left:0}
-#list{flex:1;overflow-y:auto}
-.row{display:flex;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line)}
+#list{flex:1;overflow-y:auto;background:var(--bg)}
+.row{background:var(--theirs);display:flex;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line)}
 .av{width:44px;height:44px;border-radius:50%;background:var(--bar);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;flex:none}
 .sub,.note{color:var(--mute);font-size:13px}.note{padding:24px;text-align:center;font-size:15px}
 #chat{display:none;flex:1;flex-direction:column;min-height:0}
-#msgs{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:6px}
-.m{max-width:80%;padding:8px 12px;border-radius:14px;background:var(--theirs);overflow-wrap:anywhere}
-.m.me{align-self:flex-end;background:var(--mine)}
+#msgs{background:var(--bg);flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:6px}
+.m{max-width:80%;padding:8px 12px;border-radius:16px 16px 16px 4px;background:var(--theirs);border:1px solid var(--line);box-shadow:0 1px 2px rgba(0,0,0,.06);overflow-wrap:anywhere}
+.m.me{align-self:flex-end;background:var(--mine);border-color:transparent;border-radius:16px 16px 4px 16px}
 .m small{display:block;color:var(--mute);font-size:11px;text-align:right}
 .m b{display:block;font-size:12px;color:var(--bar)}
 .m img{max-width:100%;border-radius:10px;display:block}.m audio{max-width:100%}
-form{display:flex;gap:6px;padding:8px;border-top:1px solid var(--line);align-items:center}
+form{background:var(--theirs);display:flex;gap:6px;padding:8px;border-top:1px solid var(--line);align-items:center}
 form input[type=text]{flex:1;border:0;background:var(--inb);color:var(--t);border-radius:22px;padding:12px 16px;font-size:16px;outline:none;min-width:0}
 .ib{background:none;border:0;font-size:22px;padding:0 4px}.rec{animation:p 1s infinite}@keyframes p{50%{opacity:.3}}
 #send{background:var(--bar);color:#fff;border:0;border-radius:50%;width:46px;height:46px;font-size:20px;flex:none}
@@ -33,15 +33,26 @@ form input[type=text]{flex:1;border:0;background:var(--inb);color:var(--t);borde
 .bt{background:var(--bar);color:#fff;border:0;border-radius:22px;padding:14px;font-size:16px;font-weight:600}
 .lk{background:none;border:0;color:var(--bar);font-size:15px}
 #gm{color:var(--bar);text-align:center;min-height:20px;font-size:14px}
-#toast{position:fixed;top:60px;left:12px;right:12px;background:var(--bar);color:#fff;padding:12px 16px;border-radius:12px;display:none;z-index:30}
+#call,#inc{position:fixed;inset:0;background:#111;z-index:40;display:none;flex-direction:column;align-items:center;color:#fff}
+#rv{width:100%;flex:1;min-height:0;object-fit:cover;background:#222}#lv{position:absolute;top:calc(env(safe-area-inset-top,0px) + 12px);right:12px;width:90px;height:120px;object-fit:cover;border-radius:10px;background:#333;border:2px solid #fff}
+#cn{position:absolute;top:calc(env(safe-area-inset-top,0px) + 20px);left:0;right:110px;text-align:center;font-size:20px;font-weight:700;text-shadow:0 1px 4px #000}#cs{font-size:14px;font-weight:400}
+.cb{display:flex;gap:28px;padding:18px 0 calc(env(safe-area-inset-bottom,0px) + 22px);justify-content:center}.cb button{width:64px;height:64px;border-radius:50%;border:0;font-size:26px;background:#444;color:#fff}.cb .red{background:#e03131}.cb .grn{background:#2f9e44}
+#inc{justify-content:center;gap:24px;background:rgba(17,17,17,.96)}#inc h2{margin:0}
+#title{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}header button{padding:0 3px!important}
+#meb{width:32px;height:32px;border-radius:50%;background-color:#ffffff26;background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;font-size:16px;flex:none;border:2px solid #fff}
+#ft{text-align:center;font-size:12px;color:var(--mute);padding:6px 4px;flex:none;border-top:1px solid var(--line)}#gate #ft{border:0;margin-top:10px}
+#toast{position:fixed;top:60px;left:12px;right:12px;background:var(--hdr);color:#fff;padding:12px 16px;border-radius:12px;display:none;z-index:30}
 </style></head><body>
-<header><button id="back" hidden>←</button><span id="title">UK Love App ❤️</span><button id="fpb">👆</button><button id="out">⎋</button></header>
+<header><button id="back" hidden>←</button><div id="hav" class="av" hidden style="width:34px;height:34px"></div><span id="title">UK Love App ❤️</span><button id="cA" hidden>📞</button><button id="cV" hidden>📹</button><div id="meb" title="Profile photo">👤</div><input id="pf" type="file" accept="image/*" hidden><button id="fpb">👆</button><button id="out">⎋</button></header>
 <div id="list"></div>
 <div id="chat"><div id="msgs"></div>
 <form id="f"><button type="button" class="ib" id="pic">📷</button><input id="file" type="file" accept="image/*" hidden><button type="button" class="ib" id="mic">🎤</button><input id="inp" type="text" placeholder="Message likho…" autocomplete="off"><button id="send" type="submit">➤</button></form></div>
 <div id="gate"><h2>UK Love App ❤️</h2><div id="gt" style="text-align:center;font-weight:600">Login</div>
 <input id="gu" placeholder="Username" autocomplete="username" autocapitalize="none"><input id="gp" type="password" placeholder="Password" autocomplete="current-password">
-<button class="bt" id="gb">Login</button><button class="lk" id="gs">Naya account banao</button><button class="bt" id="gf" style="display:none">👆 Fingerprint se kholo</button><div id="gm"></div></div>
+<button class="bt" id="gb">Login</button><button class="lk" id="gs">Naya account banao</button><button class="bt" id="gf" style="display:none">👆 Fingerprint se kholo</button><div id="gm"></div><div id="ft">This app made by UMAR RAJPOOT ❤️</div></div>
+<div id="ft">This app made by UMAR RAJPOOT ❤️</div>
+<div id="call"><video id="rv" autoplay playsinline></video><video id="lv" autoplay playsinline muted></video><div id="cn"><div id="cnn"></div><div id="cs"></div></div><div class="cb"><button id="cm">🎤</button><button id="ce" class="red">📵</button></div></div>
+<div id="inc"><div style="font-size:60px">📞</div><h2 id="in"></h2><div id="it"></div><div class="cb"><button id="ir" class="red">✖</button><button id="ia" class="grn">✔</button></div></div>
 <div id="toast"></div>
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -62,6 +73,8 @@ if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(
 firebase.initializeApp(firebaseConfig);
 const auth=firebase.auth(),db=firebase.firestore();
 let me,myName='',people={},unsub=null,cur='',curId='',t0=Date.now(),started=false,signup=false,fpOk=false;
+function setAv(el,p,n){if(p){el.style.backgroundImage='url('+p+')';el.style.backgroundSize='cover';el.style.backgroundPosition='center';el.textContent=''}else{el.style.backgroundImage='';el.textContent=ini(n)}}
+function setMe(){const p=(people[me]||{}).photo,m=$('meb');m.style.backgroundImage=p?'url('+p+')':'';m.textContent=p?'':'👤'}
 const ini=n=>(n||'?').charAt(0).toUpperCase(),mail=u=>u.toLowerCase().replace(/[^a-z0-9._-]/g,'')+'@ukloveapp.app';
 const b64=b=>btoa(String.fromCharCode(...new Uint8Array(b))),unb=x=>Uint8Array.from(atob(x),c=>c.charCodeAt(0));
 
@@ -91,22 +104,24 @@ auth.onAuthStateChanged(async u=>{
   else go();
 });
 function go(){if(started)return;started=true;$('gate').style.display='none';
+  db.collection('calls').where('to','==',me).onSnapshot(sn=>sn.docChanges().forEach(ch=>{const d=ch.doc.data(),id=ch.doc.id;if(!d)return;
+    if(d.state==='ringing'&&Date.now()-d.t<40000&&!pc&&!inc)showInc(id,d);
+    else if(inc&&inc.id===id&&d.s===inc.d.s&&d.state!=='ringing'&&!pc)hideInc()}),()=>{});
   safe(()=>window.Notification&&Notification.permission==='default'&&Notification.requestPermission());
-  db.collection('users').onSnapshot(s=>{people={};s.docs.forEach(d=>people[d.id]=d.data());myName=(people[me]||{}).name||'';if($('list').style.display!=='none')renderList()});
+  db.collection('users').onSnapshot(s=>{people={};s.docs.forEach(d=>people[d.id]=d.data());myName=(people[me]||{}).name||'';setMe();if($('list').style.display!=='none')renderList()});
   db.collection('last').onSnapshot(s=>s.docChanges().forEach(c=>{const m=c.doc.data(),id=c.doc.id;
     if(c.type==='removed'||m.u===me||m.t<t0||id===cur)return;if(id==='all'||id.split('_').includes(me))notify(m.n,m.x)}));
   renderList()}
 
 /* ---------- List & Chat ---------- */
-function show(l){$('list').style.display=l?'block':'none';$('chat').style.display=l?'none':'flex';$('back').hidden=l;if(l)$('title').textContent='UK Love App ❤️'}
+function show(l){$('hav').hidden=l;$('cA').hidden=$('cV').hidden=l;$('cA').style.marginLeft='auto';$('fpb').style.marginLeft=l?'auto':'0';$('list').style.display=l?'block':'none';$('chat').style.display=l?'none':'flex';$('back').hidden=l;if(l)$('title').textContent='UK Love App ❤️'}
 function renderList(){const l=$('list');l.textContent='';
   const add=(id,n,sub)=>{const r=document.createElement('div');r.className='row';r.innerHTML='<div class="av"></div><div><div class="n"></div><div class="sub"></div></div>';
-    r.querySelector('.av').textContent=id==='all'?'❤':ini(n);r.querySelector('.n').textContent=n;r.querySelector('.sub').textContent=sub;r.onclick=()=>openChat(id,n);l.appendChild(r)};
-  add('all','UK Love Group','Sab log yahan chat karte hain');
+    setAv(r.querySelector('.av'),(people[id]||{}).photo,n);r.querySelector('.n').textContent=n;r.querySelector('.sub').textContent=sub;r.onclick=()=>openChat(id,n);l.appendChild(r)};
   Object.entries(people).filter(([k])=>k!==me).forEach(([k,v])=>add(k,v.name||'User','Private chat'));
   if(Object.keys(people).length<2)l.insertAdjacentHTML('beforeend','<div class="note">Doston ko app do — jab wo account banayenge, yahan nazar aayenge.</div>')}
 function openChat(id,name){
-  cur=id==='all'?'all':[me,id].sort().join('_');curId=id;$('title').textContent=name;show(false);$('msgs').textContent='';
+  cur=id==='all'?'all':[me,id].sort().join('_');curId=id;$('title').textContent=name;show(false);setAv($('hav'),(people[id]||{}).photo,name);$('msgs').textContent='';
   if(unsub)unsub();
   unsub=db.collection('chats/'+cur+'/messages').orderBy('t').limitToLast(150).onSnapshot(s=>{
     const box=$('msgs');box.textContent='';
@@ -122,6 +137,14 @@ async function post(o){try{const t=Date.now();await db.collection('chats/'+cur+'
   await db.doc('last/'+cur).set({u:me,t,n:myName||'Friend',x:o.k==='img'?'📷 Photo':o.k==='aud'?'🎤 Voice note':o.x})}catch(e){alert('Send nahi hua. Internet check karo.')}}
 $('f').onsubmit=e=>{e.preventDefault();const x=$('inp').value.trim();if(!x)return;$('inp').value='';post({x})};
 
+/* ---------- Profile photo ---------- */
+$('meb').onclick=()=>$('pf').click();
+$('pf').onchange=e=>{const f=e.target.files[0];e.target.value='';if(!f)return;const im=new Image();
+  im.onload=()=>{const n=Math.min(im.width,im.height),c=document.createElement('canvas');c.width=c.height=160;
+    c.getContext('2d').drawImage(im,(im.width-n)/2,(im.height-n)/2,n,n,0,0,160,160);
+    db.collection('users').doc(me).set({photo:c.toDataURL('image/jpeg',.7)},{merge:true}).then(()=>{const t=$('toast');t.textContent='Profile photo lag gayi ✅';t.style.display='block';setTimeout(()=>t.style.display='none',2500)}).catch(()=>alert('Photo save nahi hui.'))};
+  im.src=URL.createObjectURL(f)};
+
 /* ---------- Photo & Voice (Firestore mein chhoti file ke taur par) ---------- */
 $('pic').onclick=()=>$('file').click();
 $('file').onchange=e=>{const f=e.target.files[0];e.target.value='';if(!f)return;const im=new Image();
@@ -134,6 +157,45 @@ $('mic').onclick=async()=>{if(mr){mr.stop();return}
       if(bl.size<500)return;const r=new FileReader();r.onload=()=>{if(r.result.length>900000)alert('Voice note bohat lamba hai.');else post({k:'aud',d:r.result})};r.readAsDataURL(bl)};
     mr.start();tm=setTimeout(()=>mr&&mr.stop(),40000);$('mic').classList.add('rec');$('mic').textContent='⏹️'}
   catch(e){alert('Mic ki ijazat nahi mili.')}};
+
+/* ---------- Calls (WebRTC) ---------- */
+const ICE={iceServers:[{urls:'stun:stun.l.google.com:19302'},{urls:'stun:stun1.l.google.com:19302'},{urls:['turn:openrelay.metered.ca:80','turn:openrelay.metered.ca:443','turn:openrelay.metered.ca:443?transport=tcp'],username:'openrelayproject',credential:'openrelayproject'}]};
+let pc=null,ls=null,cs=0,cid2='',cu=[],qc=[],inc=null,ringIv=null;
+const beep=()=>safe(()=>{const c=new (window.AudioContext||window.webkitAudioContext)(),o=c.createOscillator();o.connect(c.destination);o.frequency.value=660;o.start();o.stop(c.currentTime+.4)});
+const media=v=>navigator.mediaDevices.getUserMedia({audio:true,video:v?{facingMode:'user'}:false});
+function callUI(name,st,v){$('call').style.display='flex';$('cnn').textContent=name;$('cs').textContent=st;$('lv').style.display=v?'block':'none';$('lv').srcObject=ls;$('cm').textContent='🎤'}
+async function addCand(c){const x=JSON.parse(c);if(pc&&pc.remoteDescription){try{await pc.addIceCandidate(x)}catch(e){}}else qc.push(x)}
+async function flush(){for(const c of qc){try{await pc.addIceCandidate(c)}catch(e){}}qc=[]}
+function mkpc(c){
+  pc=new RTCPeerConnection(ICE);qc=[];ls.getTracks().forEach(t=>pc.addTrack(t,ls));
+  pc.ontrack=e=>{$('rv').srcObject=e.streams[0];$('cs').textContent='Connected ✅'};
+  pc.onicecandidate=e=>{if(e.candidate)db.collection('calls/'+c+'/cand').add({u:me,s:cs,c:JSON.stringify(e.candidate)}).catch(()=>{})};
+  pc.onconnectionstatechange=()=>{if(pc&&pc.connectionState==='failed')$('cs').textContent='Connection nahi ban saka (network)'};
+  cu.push(db.collection('calls/'+c+'/cand').onSnapshot(s=>s.docChanges().forEach(ch=>{if(ch.type!=='added')return;const d=ch.doc.data();if(d.u!==me&&d.s===cs)addCand(d.c)})))}
+async function startCall(v){
+  if(!curId||pc)return;const c=cur;cid2=c;cs=Date.now();
+  try{ls=await media(v)}catch(e){alert('Mic ya Camera ki ijazat nahi mili.');return}
+  callUI($('title').textContent,'Calling…',v);mkpc(c);
+  const o=await pc.createOffer();await pc.setLocalDescription(o);
+  await db.doc('calls/'+c).set({from:me,to:curId,fn:myName||'Friend',video:!!v,state:'ringing',offer:{type:o.type,sdp:o.sdp},answer:null,s:cs,t:Date.now()});
+  cu.push(db.doc('calls/'+c).onSnapshot(async s=>{const d=s.data();if(!d||d.s!==cs||!pc)return;
+    if(d.answer&&!pc.currentRemoteDescription){await pc.setRemoteDescription(d.answer);await flush();$('cs').textContent='Connecting…'}
+    if(d.state==='ended'||d.state==='rejected')endLocal(d.state==='rejected'?'Call reject hui':'Call khatam')}));
+  setTimeout(()=>{if(pc&&$('cs').textContent==='Calling…'){hang();endLocal('Jawab nahi aaya')}},45000)}
+function showInc(id,d){inc={id,d};$('in').textContent=d.fn||'Friend';$('it').textContent=d.video?'Video call aa rahi hai':'Voice call aa rahi hai';$('inc').style.display='flex';beep();ringIv=setInterval(()=>{beep();safe(()=>navigator.vibrate&&navigator.vibrate(300))},1500)}
+function hideInc(){clearInterval(ringIv);$('inc').style.display='none';inc=null}
+$('ia').onclick=async()=>{const {id,d}=inc;hideInc();cid2=id;cs=d.s;
+  try{ls=await media(d.video)}catch(e){alert('Mic ya Camera ki ijazat nahi mili.');db.doc('calls/'+id).update({state:'rejected'});return}
+  callUI(d.fn,'Connecting…',d.video);mkpc(id);
+  await pc.setRemoteDescription(d.offer);await flush();const a=await pc.createAnswer();await pc.setLocalDescription(a);
+  await db.doc('calls/'+id).update({answer:{type:a.type,sdp:a.sdp},state:'accepted'});
+  cu.push(db.doc('calls/'+id).onSnapshot(s=>{const x=s.data();if(x&&x.s===cs&&x.state==='ended')endLocal('Call khatam')}))};
+$('ir').onclick=()=>{const id=inc.id;hideInc();db.doc('calls/'+id).update({state:'rejected'}).catch(()=>{})};
+function hang(){if(cid2)db.doc('calls/'+cid2).update({state:'ended'}).catch(()=>{});endLocal('')}
+function endLocal(msg){cu.forEach(f=>f());cu=[];if(pc){pc.close();pc=null}if(ls){ls.getTracks().forEach(t=>t.stop());ls=null}
+  $('call').style.display='none';$('rv').srcObject=null;$('lv').srcObject=null;cid2='';if(msg){const t=$('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',3000)}}
+$('ce').onclick=hang;$('cA').onclick=()=>startCall(false);$('cV').onclick=()=>startCall(true);
+$('cm').onclick=()=>{if(!ls)return;const t=ls.getAudioTracks()[0];if(t){t.enabled=!t.enabled;$('cm').textContent=t.enabled?'🎤':'🔇'}};
 
 /* ---------- Notification (app khuli ho tab) ---------- */
 function notify(n,x){const t=$('toast');t.textContent='💗 '+n+': '+x;t.style.display='block';setTimeout(()=>t.style.display='none',4000);
