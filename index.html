@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <meta name="theme-color" content="#1c0626">
 <title>UK Love App</title>
 <link rel="manifest" href="manifest.json"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
@@ -144,11 +144,25 @@ header.home #rf{width:56px;height:56px;border:2px solid #ff4fb5;background:#1a0d
 #tabs button.on{background:linear-gradient(135deg,#ff4fb5,#b0156f);box-shadow:0 0 18px #ff4fb599}#tabs button.on svg{background:none;box-shadow:none}
 body>#ft{display:flex;align-items:center;justify-content:center;gap:12px;font-size:17px;padding:14px 16px 16px;margin-top:8px;border-radius:34px 34px 0 0;background:linear-gradient(180deg,#14041c,#6a0f58 70%,#ec2f9b);border-top:1.5px solid #ff4fb577}
 body>#ft:before,body>#ft:after{content:'';flex:1;height:1.5px;background:linear-gradient(90deg,transparent,#ff4fb5)}body>#ft:after{transform:scaleX(-1)}
+/* ====== Header fixed (keyboard / long chat) ====== */
+html,body{overflow:hidden;overscroll-behavior:none}body{position:fixed;left:0;top:0;width:100%}
+header,form,#tabs,#blk,body>#ft{flex:none}#chat{min-height:0}#msgs{min-height:0;overscroll-behavior:contain}
+/* ====== New features ====== */
+.m{position:relative}.m:has(.rx){margin-bottom:12px}.rq{border-left:3px solid #ff8fd0;background:#ffffff1c;border-radius:8px;padding:4px 8px;margin-bottom:4px;font-size:13px;opacity:.92}.fwl{font-size:11px;opacity:.7;font-style:italic}
+.rx{position:absolute;left:10px;bottom:-12px;background:#1d1030;border:1px solid #ff4fb577;border-radius:12px;padding:0 6px;font-size:12px}
+#rpb{flex:none;display:flex;align-items:center;gap:8px;padding:8px 14px;background:#1d1030;border-top:1px solid #ff4fb544;border-left:4px solid #ff4fb5;font-size:14px;color:var(--mute)}#rpb span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}#rpb button{background:none;border:0;color:#fff;font-size:18px}
+.bd{position:absolute;right:58px;bottom:14px;min-width:26px;height:26px;border-radius:13px;background:#ec2f9b;color:#fff;font:700 14px/26px system-ui;text-align:center;padding:0 7px;box-shadow:0 0 10px #ff4fb5aa}.bd.mu{background:#6b5a80;box-shadow:none}
+.ab{font-size:14px;color:#ff9bd5;text-align:center;margin-top:6px;padding:0 24px;overflow-wrap:anywhere}
+/* ====== Edit / search / star / emoji / dates ====== */
+.m{transition:transform .15s}.dsep{align-self:center;font-size:12px;color:#fff;background:#ffffff1f;padding:3px 12px;border-radius:12px;margin:8px 0;flex:none}
+#csb{flex:none;display:flex;align-items:center;gap:8px;padding:8px 10px;background:#14061f;border-bottom:1px solid #ff4fb544}#csb input{flex:1;min-width:0;background:var(--inb);color:#fff;border:1px solid #ff4fb544;border-radius:20px;padding:9px 14px;font-size:15px;outline:none}#csb button{background:none;border:0;color:#fff;font-size:20px;padding:2px 6px;opacity:.6}#csb button.on{opacity:1}
+#emo{flex:none;max-height:210px;overflow-y:auto;display:grid;grid-template-columns:repeat(8,1fr);gap:2px;padding:8px;background:#14061f;border-top:1px solid #ff4fb544}#emo button{background:none;border:0;font-size:26px;padding:4px}
+body>#ft span{white-space:nowrap;font-size:15px}body>#ft{gap:8px}
 </style></head><body>
-<header><div id="brand"><i></i><span><b>UK</b><em>Love</em></span></div><button id="back" hidden>←</button><div id="hav" class="av" hidden style="width:34px;height:34px"></div><div id="tw"><span id="title">UK Love</span><div id="tsub"></div></div><button id="cA" hidden></button><button id="cV" hidden></button><span id="hs"><button id="rf"></button><button id="ng"></button></span><div id="meb" style="display:none"></div><input id="pf" type="file" accept="image/*" hidden><button id="fpb" style="display:none"></button><button id="out" style="display:none"></button></header>
+<header><div id="brand"><i></i><span><b>UK</b><em>Love</em></span></div><button id="back" hidden>←</button><div id="hav" class="av" hidden style="width:34px;height:34px"></div><div id="tw"><span id="title">UK Love</span><div id="tsub"></div></div><button id="cS" hidden></button><button id="cA" hidden></button><button id="cV" hidden></button><span id="hs"><button id="rf"></button><button id="ng"></button></span><div id="meb" style="display:none"></div><input id="pf" type="file" accept="image/*" hidden><button id="fpb" style="display:none"></button><button id="out" style="display:none"></button></header>
 <div id="list"><div id="sb"><input id="q" placeholder="Search chats…"></div><div id="lr"></div></div><div id="stv"></div><div id="calls"></div><div id="set"></div>
-<div id="chat"><div id="msgs"></div><div id="blk">You blocked this contact. <b>Tap to unblock</b></div>
-<form id="f"><button type="button" class="ib" id="pic">📷</button><input id="file" type="file" accept="image/*" hidden><button type="button" class="ib" id="mic">🎤</button><input id="inp" type="text" placeholder="Type a message…" autocomplete="off"><button id="send" type="submit">➤</button></form></div>
+<div id="chat"><div id="csb" hidden><input id="csq" placeholder="Search in chat…" autocomplete="off"><button type="button" id="csS">⭐</button><button type="button" id="csx">✕</button></div><div id="msgs"></div><div id="blk">You blocked this contact. <b>Tap to unblock</b></div>
+<div id="emo" hidden></div><div id="rpb" hidden><span></span><button type="button" id="rpx">✕</button></div><form id="f"><button type="button" class="ib" id="pic">📷</button><input id="file" type="file" accept="image/*" hidden><button type="button" class="ib" id="mic">🎤</button><button type="button" class="ib" id="emb">😊</button><input id="inp" type="text" placeholder="Type a message…" autocomplete="off"><button id="send" type="submit">➤</button></form></div>
 <nav id="tabs"><button class="on" data-t="chats"></button><button data-t="status"></button><button data-t="calls"></button><button data-t="set"></button></nav>
 <div id="gate"><img id="lg" src="icon-192.png" alt=""><h2>UK Love</h2><div id="gt" style="text-align:center;font-weight:600">Login</div>
 <input id="gu" placeholder="Username" autocomplete="username" autocapitalize="none"><input id="ge" type="email" placeholder="Email address" autocomplete="email" autocapitalize="none" style="display:none"><input id="gp" type="password" placeholder="Password" autocomplete="current-password">
@@ -254,7 +268,7 @@ function go(){if(started)return;started=true;
   db.collection('users').onSnapshot(s=>{people={};s.docs.forEach(d=>people[d.id]=d.data());myName=(people[me]||{}).name||'';if(!s.metadata.fromCache)uFresh=true;setMe();subline();renderList();if(tab==='status')renderStatus();maybeMig();saveCache();applyBlockUI()});
   db.collection('last').onSnapshot(s=>{s.docChanges().forEach(c=>lm[c.doc.id]=c.doc.data());if(!s.metadata.fromCache)lFresh=true;renderList();maybeMig();saveCache()},()=>{});
   db.collection('last').onSnapshot(s=>s.docChanges().forEach(c=>{const m=c.doc.data(),id=c.doc.id;
-    if(c.type==='removed'||m.u===me||m.t<t0||id===cur||blockedList().includes(m.u))return;if(id.startsWith('g_')?!!groups[id.slice(2)]:id.split('_').includes(me))notify(m.n,m.x)}));
+    if(c.type==='removed'||m.u===me||m.t<t0||id===cur||blockedList().includes(m.u))return;if(id.startsWith('g_')?!!groups[id.slice(2)]:id.split('_').includes(me)){bump(id);if(!muted(id))notify(m.n,m.x)}}));
   db.collection('groups').where('members','array-contains',me).onSnapshot(s=>{groups={};s.docs.forEach(d=>groups[d.id]=d.data());renderList();saveCache()},()=>{});
   const mc=s=>{s.docs.forEach(d=>cl[d.id]=d.data());if(tab==='calls')renderCalls()};db.collection('callog').where('from','==',me).onSnapshot(mc,()=>{});db.collection('callog').where('to','==',me).onSnapshot(mc,()=>{});
   const beat=()=>{if(!cfg.hideSeen&&!document.hidden)db.collection('users').doc(me).set({seen:Date.now()},{merge:true}).catch(()=>{})};beat();setInterval(beat,30000);document.addEventListener('visibilitychange',beat);
@@ -262,7 +276,7 @@ function go(){if(started)return;started=true;
   show(true);renderList();applyCfg()}
 
 /* ---------- List & Chat ---------- */
-function show(l){document.querySelector('header').classList.toggle('home',!!l&&tab==='chats');document.querySelector('body > #ft').style.display=l?'':'none';$('hav').hidden=l;$('cA').hidden=$('cV').hidden=l||isG;$('back').hidden=l;$('tabs').style.display=l?'flex':'none';$('chat').style.display=l?'none':'flex';$('hs').style.display=l?'flex':'none';$('ng').style.display=(l&&tab==='chats')?'flex':'none';
+function show(l){document.querySelector('header').classList.toggle('home',!!l&&tab==='chats');document.querySelector('body > #ft').style.display=l?'':'none';$('hav').hidden=l;$('cS').hidden=l;$('cA').hidden=$('cV').hidden=l||isG;$('back').hidden=l;$('tabs').style.display=l?'flex':'none';$('chat').style.display=l?'none':'flex';$('hs').style.display=l?'flex':'none';$('ng').style.display=(l&&tab==='chats')?'flex':'none';
   ['list','stv','calls','set'].forEach(x=>$(x).style.display=(l&&({list:'chats',stv:'status',calls:'calls',set:'set'}[x]===tab))?'block':'none');$('sa').style.display=(l&&tab==='status')?'flex':'none';if(l){$('title').textContent={chats:'UK Love',status:'Status',calls:'Calls',set:'Settings'}[tab];$('tsub').textContent=''}}
 let lm={},isG=false,tab='chats',groups={},cl={},callMeta=null,tpT=0,lt=0,uFresh=false,lFresh=false,migDone=false,scT=null;
 /* ---------- My chat list = only people I added ---------- */
@@ -281,7 +295,7 @@ async function addFriend(){
   const t=$('toast');t.textContent=nm+' added ✅';t.style.display='block';setTimeout(()=>t.style.display='none',2500);openChat(id,nm)}
 function rowMenu(i){const b=$('mn');if(b.style.display==='flex')return;b.innerHTML='<div class="sheet"></div>';const sh=b.firstChild;
   const add=(t,f,red)=>{const x=document.createElement('button');x.textContent=t;if(red)x.style.color='#e03131';x.onclick=()=>{b.style.display='none';if(f)f()};sh.appendChild(x)};
-  add('Remove '+i.n+' from chat list',async()=>{if(await dlg('Remove '+i.n+' from your chat list? Old messages are kept and you can add them again anytime.',{confirm:1}))db.doc('users/'+me).set({contacts:conList().filter(k=>k!==i.id)},{merge:true}).catch(()=>alert('Could not remove. Check your internet connection.'))},1);add('Cancel');b.style.display='flex'}
+  add(pinned(i.cid)?'Unpin chat':'Pin chat to top',()=>togg('p',i.cid));add(muted(i.cid)?'Unmute notifications':'Mute notifications',()=>togg('m',i.cid));add('Remove '+i.n+' from chat list',async()=>{if(await dlg('Remove '+i.n+' from your chat list? Old messages are kept and you can add them again anytime.',{confirm:1}))db.doc('users/'+me).set({contacts:conList().filter(k=>k!==i.id)},{merge:true}).catch(()=>alert('Could not remove. Check your internet connection.'))},1);add('Cancel');b.style.display='flex'}
 const seenTxt=u=>{if(!u||!u.seen)return '';if(Date.now()-u.seen<75000)return 'Online';const t=new Date(u.seen);return 'Last seen '+(new Date().toDateString()===t.toDateString()?'today':t.toLocaleDateString([],{day:'numeric',month:'short'}))+' '+t.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})};
 function subline(){if(!cur)return;const e=$('tsub');if(tpT&&Date.now()-tpT<5000){e.textContent='typing…';return}
   if(isG){const g=groups[cur.slice(2)];e.textContent=g?g.members.map(x=>(people[x]||{}).name||'').filter(Boolean).join(', '):'';return}e.textContent=seenTxt(people[curId])}
@@ -289,19 +303,20 @@ setInterval(subline,4000);
 function renderList(){const l=$('lr');l.textContent='';const q=($('q').value||'').toLowerCase(),items=[];
   Object.entries(groups).forEach(([k,g])=>items.push({id:'g_'+k,cid:'g_'+k,n:g.name,g:1,sub:g.members.length+' members'}));
   const con=conList();Object.entries(people).filter(([k])=>k!==me&&con.includes(k)).forEach(([k,v])=>items.push({id:k,cid:[me,k].sort().join('_'),n:v.name||'User',p:v.photo,sub:seenTxt(v)||'Say hello 👋'}));
-  items.forEach(i=>i.l=lm[i.cid]);items.sort((a,b)=>((b.l||{}).t||0)-((a.l||{}).t||0));
+  items.forEach(i=>i.l=lm[i.cid]);items.sort((a,b)=>((b.l||{}).t||0)-((a.l||{}).t||0));items.sort((a,b)=>pinned(b.cid)-pinned(a.cid));
   items.forEach(i=>{if(q&&!i.n.toLowerCase().includes(q))return;const r=document.createElement('div');r.className='row';r.innerHTML='<div class="av"></div><div class="rb"><div class="n"></div><div class="sub"></div></div><div class="rm"></div>';
     const av=r.querySelector('.av');if(i.g)av.innerHTML=I.grp;else setAv(av,i.p,i.n);r.querySelector('.n').textContent=i.n;const sb=r.querySelector('.sub');
     if(i.l){sb.textContent=(i.l.u===me?'You: ':'')+i.l.x;const t=new Date(i.l.t);r.querySelector('.rm').textContent=new Date().toDateString()===t.toDateString()?t.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):t.toLocaleDateString([],{day:'numeric',month:'short'})}
     else{sb.textContent=i.sub;if(i.sub==='Online')sb.style.color='#16a34a'}
     if(!i.g&&blockedList().includes(i.id)){sb.textContent='🚫 Blocked';sb.style.color='#e03131'}
     let lp=false,tt;if(!i.g){r.ontouchstart=()=>{lp=false;tt=setTimeout(()=>{lp=true;rowMenu(i)},600)};r.ontouchend=r.ontouchmove=()=>clearTimeout(tt);r.oncontextmenu=ev=>{ev.preventDefault();rowMenu(i)}}
+    {const nn=CN()[i.cid]||0,un=i.l&&i.l.u!==me&&i.l.t>raOf(i.cid);if(nn||un){const bd=document.createElement('span');bd.className='bd'+(muted(i.cid)?' mu':'');bd.textContent=nn||1;r.appendChild(bd)}r.querySelector('.n').textContent=(pinned(i.cid)?'📌 ':'')+i.n+(muted(i.cid)?' 🔇':'')}
     if(!i.g&&i.sub==='Online'){const d=document.createElement('i');d.className='dot';av.appendChild(d)}
     r.onclick=()=>{if(lp){lp=false;return}openChat(i.id,i.n)};l.appendChild(r)});
   if(!l.children.length)l.innerHTML='<div class="note">No chats yet. Tap the + button to add a friend by username, or create a group.</div>'}
 $('q').oninput=renderList;
 const chatLayer=()=>closeChatUI();
-function closeChatUI(){if(unsub)unsub();unsub=null;cur='';rdDocs=[];show(true)}
+function closeChatUI(){if(unsub)unsub();unsub=null;cur='';rdDocs=[];clearReply();show(true);renderList()}
 /* ---------- Seen / read receipts ---------- */
 let rdDocs=[];const tried=new Set();
 function checkSeen(){if(!cur||document.hidden||cfg.hideSeen)return;
@@ -310,19 +325,23 @@ function checkSeen(){if(!cur||document.hidden||cfg.hideSeen)return;
 document.addEventListener('visibilitychange',checkSeen);
 function openChat(id,name){
   if(!layers.includes(chatLayer))pushLayer(chatLayer);
-  isG=id.startsWith('g_');cur=isG?id:[me,id].sort().join('_');curId=id;tpT=0;$('title').textContent=name;show(false);
+  isG=id.startsWith('g_');cur=isG?id:[me,id].sort().join('_');curId=id;tpT=0;$('title').textContent=name;clearReply();markRead(cur);$('csb').hidden=true;$('csq').value='';csStar=false;$('csS').classList.remove('on');$('emo').hidden=true;show(false);
   setAv($('hav'),isG?null:(people[id]||{}).photo,name);if(isG)$('hav').innerHTML=I.grp;$('msgs').textContent='';if(unsub)unsub();subline();applyBlockUI();
   const u1=db.collection('chats/'+cur+'/messages').orderBy('t').limitToLast(200).onSnapshot(s=>{
-    const box=$('msgs');box.textContent='';let lastMine=null;
+    const box=$('msgs');box.textContent='';let lastMine=null,ld='';
     s.docs.forEach(d=>{const m=d.data();if(m['h_'+me])return;if(m.u!==me&&blockedList().includes(m.u))return;const el=document.createElement('div');el.className='m'+(m.u===me?' me':'');
       if(m.del){el.textContent='🚫 This message was deleted';el.style.opacity=.6;el.style.fontStyle='italic'}
       else{if(isG&&m.u!==me){const b=document.createElement('b');b.textContent=(people[m.u]||{}).name||'User';el.appendChild(b)}
+        if(m.fw){const q=document.createElement('div');q.className='fwl';q.textContent='↪ Forwarded';el.appendChild(q)}if(m.rp){const q=document.createElement('div');q.className='rq';q.textContent=m.rp.n+': '+m.rp.x;el.appendChild(q)}
         if(m.k==='img'){const i=document.createElement('img');i.src=m.d;i.onclick=()=>{$('lbi').src=m.d;$('lb').style.display='flex'};el.appendChild(i)}
         else if(m.k==='aud'){const a=document.createElement('audio');a.controls=true;a.src=m.d;el.appendChild(a)}
         else el.appendChild(document.createTextNode(m.x||''))}
-      const sm=document.createElement('small');sm.textContent=new Date(m.t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});el.appendChild(sm);
+      const sm=document.createElement('small');sm.textContent=new Date(m.t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})+(m.ed&&!m.del?' · edited':'')+(m['s_'+me]?' ⭐':'');if(m['s_'+me])el.dataset.st='1';el.appendChild(sm);
+      const rc=Object.keys(m).filter(k=>k.startsWith('r_')&&m[k]).length;if(rc&&!m.del){const r=document.createElement('span');r.className='rx';r.textContent='❤️'+(rc>1?' '+rc:'');el.appendChild(r)}el.ondblclick=()=>{if(!m.del)react(db.doc('chats/'+cur+'/messages/'+d.id),m)};
+      {let sx=0,sy=0,sw=0;el.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY;sw=0},{passive:true});el.addEventListener('touchmove',e=>{const dx=e.touches[0].clientX-sx,dy=Math.abs(e.touches[0].clientY-sy);if(dy<25&&dx>0){sw=dx;el.style.transform='translateX('+Math.min(dx,70)+'px)'}},{passive:true});el.addEventListener('touchend',()=>{el.style.transform='';if(sw>70&&!m.del){setReply(m);safe(()=>navigator.vibrate&&navigator.vibrate(20))}sw=0})}
       if(m.u===me&&!m.del)lastMine=m;
       let tt;el.ontouchstart=()=>{tt=setTimeout(()=>menu(d.id,m),550)};el.ontouchend=el.ontouchmove=()=>clearTimeout(tt);el.oncontextmenu=ev=>{ev.preventDefault();menu(d.id,m)};
+      {const dk=new Date(m.t).toDateString();if(dk!==ld){ld=dk;const q=document.createElement('div');q.className='dsep';q.textContent=dayLbl(m.t);box.appendChild(q)}}
       box.appendChild(el)});
     if(lastMine){const sn=lastMine.sn||[],need=isG?(groups[cur.slice(2)]||{members:[]}).members.filter(x=>x!==me):[curId],got=need.filter(x=>sn.includes(x)),d=document.createElement('div');d.className='sst';
       if(!got.length){d.textContent='○ Not seen yet';d.style.color='var(--mute)'}
@@ -330,11 +349,11 @@ function openChat(id,name){
         const tx=document.createElement('span'),at=(lastMine.sat||{})[got[0]],tm=at?new Date(at).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):'';
         tx.textContent=isG?(got.length===need.length?'Seen by everyone':'Seen by '+got.map(u=>(people[u]||{}).name||'User').join(', ')):'Seen'+(tm?' '+tm:'');d.appendChild(tx);d.style.color='var(--bar)'}
       box.appendChild(d)}
-    box.scrollTop=box.scrollHeight;rdDocs=s.docs;checkSeen()},()=>{$('msgs').textContent='Could not load messages.'});
+    box.scrollTop=box.scrollHeight;rdDocs=s.docs;csFilter();markRead(cur);checkSeen()},()=>{$('msgs').textContent='Could not load messages.'});
   const u2=db.doc('typing/'+cur).onSnapshot(sn=>{const d=sn.data();tpT=d&&d.u!==me?d.t:0;subline()});unsub=()=>{u1();u2()}}
 function menu(id,m){const b=$('mn');if(b.style.display==='flex')return;b.innerHTML='<div class="sheet"></div>';const sh=b.firstChild,ref=db.doc('chats/'+cur+'/messages/'+id);
   const add=(t,f,red)=>{const x=document.createElement('button');x.textContent=t;if(red)x.style.color='#e03131';x.onclick=()=>{b.style.display='none';if(f)f()};sh.appendChild(x)};
-  add('Delete for me',()=>ref.update({['h_'+me]:true}),1);if(m.u===me&&!m.del)add('Delete for everyone',()=>ref.update({del:true,x:'',d:firebase.firestore.FieldValue.delete()}),1);add('Cancel');b.style.display='flex'}
+  if(!m.del){add('Reply',()=>setReply(m));add(m['r_'+me]?'Remove ❤️':'❤️ React',()=>react(ref,m));add(m['s_'+me]?'Remove star ⭐':'⭐ Star',()=>ref.update({['s_'+me]:m['s_'+me]?firebase.firestore.FieldValue.delete():true}).catch(()=>alert('Could not star.')));if(m.u===me&&!m.k&&m.x)add('Edit',()=>{const v=prompt('Edit message',m.x);if(v!==null&&v.trim()&&v.trim()!==m.x)ref.update({x:v.trim(),ed:true}).catch(()=>alert('Could not edit.'))});if(m.x||m.k)add('Forward',()=>fwd(m))}add('Delete for me',()=>ref.update({['h_'+me]:true}),1);if(m.u===me&&!m.del)add('Delete for everyone',()=>ref.update({del:true,x:'',d:firebase.firestore.FieldValue.delete()}),1);add('Cancel');b.style.display='flex'}
 $('mn').onclick=e=>{if(e.target.id==='mn')$('mn').style.display='none'};$('lb').onclick=()=>$('lb').style.display='none';
 $('inp').addEventListener('input',()=>{if(cur&&Date.now()-lt>2500){lt=Date.now();db.doc('typing/'+cur).set({u:me,t:lt}).catch(()=>{})}});
 $('rf').onclick=()=>location.reload();
@@ -425,7 +444,7 @@ function renderProf(){const P=$('prof');P.textContent='';P.scrollTop=0;const id=
     const si=e.querySelector('.si');si.innerHTML=I[ic];si.style.background=col;e.querySelector('b').textContent=t;const sm=e.querySelector('small');if(sub)sm.textContent=sub;else sm.remove();if(f)e.onclick=f;card.appendChild(e)};
   if(isG){const g=groups[id.slice(2)]||{members:[]};sb.textContent=g.members.length+' members';P.appendChild(sb);
     sec('Members');g.members.forEach(u=>{const q=people[u]||{},r=document.createElement('div');r.className='sr';r.innerHTML='<div class="av" style="width:40px;height:40px;font-size:16px;box-shadow:none"></div><span class="st"><b></b></span>';setAv(r.querySelector('.av'),q.photo,q.name);r.querySelector('b').textContent=(q.name||'User')+(u===me?' (You)':'');card.appendChild(r)});return}
-  sb.textContent=seenTxt(p);P.appendChild(sb);
+  sb.textContent=seenTxt(p);P.appendChild(sb);if(p.about){const a=document.createElement('div');a.className='ab';a.textContent=p.about;P.appendChild(a)}
   const ac=document.createElement('div');ac.className='pacts';
   ac.appendChild(mk('Message',I.chat,closeProf));ac.appendChild(mk('Voice',I.phone,()=>{closeProf();startCall(false)}));ac.appendChild(mk('Video',I.video,()=>{closeProf();startCall(true)}));P.appendChild(ac);
   const bl=blockedList().includes(id);sec('Privacy');
@@ -439,7 +458,7 @@ function applyCfg(){const w=cfg.wp==='img'?'url('+LS.g('ukwp')+') center/cover':
 function playTone(i){safe(()=>{const c=new (window.AudioContext||window.webkitAudioContext)();let t=c.currentTime;(T[i]||T[0])[1].forEach(([f,d])=>{const o=c.createOscillator(),g=c.createGain();o.frequency.value=f;o.connect(g);g.connect(c.destination);g.gain.setValueAtTime(.3,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.start(t);o.stop(t+d);t+=d+.03})})}
 function renderSet(){const S=$('set');S.textContent='';let card;const p=people[me]||{};
   const top=document.createElement('div');top.className='pc';top.innerHTML='<div class="av big"></div><div class="pn"></div><div class="ps">Tap the photo to change it</div>';
-  const av=top.querySelector('.av');setAv(av,p.photo,myName);av.onclick=()=>$('meb').click();top.querySelector('.pn').textContent=myName||'';S.appendChild(top);
+  const av=top.querySelector('.av');setAv(av,p.photo,myName);av.onclick=()=>$('meb').click();top.querySelector('.pn').textContent=myName||'';const ps=top.querySelector('.ps');ps.textContent=(p.about||'Add About')+' ✎';ps.onclick=()=>{const v=prompt('About (short line)',p.about||'');if(v!==null)db.doc('users/'+me).set({about:v.trim().slice(0,80)},{merge:true}).catch(()=>alert('Could not save.'))};S.appendChild(top);
   const sec=t=>{const h=document.createElement('div');h.className='sh';h.textContent=t;S.appendChild(h);card=document.createElement('div');card.className='cd';S.appendChild(card)};
   const row=(ic,col,t,sub,c,f)=>{const e=document.createElement('div');e.className='sr';e.innerHTML='<span class="si"></span><span class="st"><b></b><small></small></span><span class="sc"></span>';
     const si=e.querySelector('.si');si.innerHTML=I[ic];si.style.background=col;e.querySelector('b').textContent=t;const sm=e.querySelector('small');if(sub)sm.textContent=sub;else sm.remove();
@@ -458,7 +477,7 @@ function renderSet(){const S=$('set');S.textContent='';let card;const p=people[m
   const ab=document.createElement('div');ab.className='note';ab.textContent='This app made by UMAR RAJPOOT ❤️';S.appendChild(ab)}
 $('wpf').onchange=e=>{const f=e.target.files[0];e.target.value='';if(!f)return;const im=new Image();im.onload=()=>{const sc=Math.min(1,900/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*sc;c.height=im.height*sc;c.getContext('2d').drawImage(im,0,0,c.width,c.height);LS.s('ukwp',c.toDataURL('image/jpeg',.6));cfg.wp='img';saveCfg()};im.src=URL.createObjectURL(f)};
 $('back').onclick=()=>{if(layers.includes(chatLayer))history.back();else closeChatUI()};
-async function post(o){if(!isG&&blockedList().includes(curId)){alert('Unblock this contact to send messages.');return}try{const t=Date.now();await db.collection('chats/'+cur+'/messages').add({u:me,t,...o});
+async function post(o){if(replyTo){o={...o,rp:replyTo};clearReply()}if(!isG&&blockedList().includes(curId)){alert('Unblock this contact to send messages.');return}try{const t=Date.now();await db.collection('chats/'+cur+'/messages').add({u:me,t,...o});
   push(isG?((groups[cur.slice(2)]||{members:[]}).members.filter(x=>x!==me)):[curId],myName||'UK Love',o.k==='img'?'📷 Photo':o.k==='aud'?'🎤 Voice note':o.x);await db.doc('last/'+cur).set({u:me,t,n:myName||'Friend',x:o.k==='img'?'📷 Photo':o.k==='aud'?'🎤 Voice note':o.x})}catch(e){alert('Message not sent. Check your internet connection.')}}
 $('f').onsubmit=e=>{e.preventDefault();const x=$('inp').value.trim();if(!x)return;$('inp').value='';post({x})};
 
@@ -540,7 +559,35 @@ function notify(n,x){if(cfg.notif===false)return;const t=$('toast');t.textConten
 
 /* ---------- Phone back button closes menus / photo viewer ---------- */
 ['mn','gm2','lb'].forEach(id=>{const e=$(id);let f=null;new MutationObserver(()=>{const on=e.style.display==='flex';if(on&&!f){f=()=>{f=null;e.style.display='none'};pushLayer(f)}else if(!on&&f){const g=f;f=null;closeLayer(g)}}).observe(e,{attributes:true,attributeFilter:['style']})});
+/* ---------- Unread / pin / mute / reply / forward / react ---------- */
+const RD=()=>safe(()=>JSON.parse(LS.g('rd_'+me)))||{},CN=()=>safe(()=>JSON.parse(LS.g('cn_'+me)))||{},PM=()=>safe(()=>JSON.parse(LS.g('pm_'+me)))||{};
+function raOf(c){const r=RD();if(!r._i){r._i=Date.now();LS.s('rd_'+me,JSON.stringify(r))}return r[c]||r._i}
+function markRead(c){if(!c)return;raOf(c);const r=RD(),n=CN();r[c]=Date.now();delete n[c];LS.s('rd_'+me,JSON.stringify(r));LS.s('cn_'+me,JSON.stringify(n))}
+function bump(c){const n=CN();n[c]=(n[c]||0)+1;LS.s('cn_'+me,JSON.stringify(n));renderList()}
+const pinned=c=>!!(PM().p||{})[c],muted=c=>!!(PM().m||{})[c];
+function togg(k,c){const p=PM();p[k]=p[k]||{};p[k][c]=!p[k][c];LS.s('pm_'+me,JSON.stringify(p));renderList()}
+const flash=t=>{const e=$('toast');e.textContent=t;e.style.display='block';setTimeout(()=>e.style.display='none',2000)};
+let replyTo=null;
+function setReply(m){replyTo={x:(m.k==='img'?'📷 Photo':m.k==='aud'?'🎤 Voice note':(m.x||'')).slice(0,80),n:m.u===me?'You':((people[m.u]||{}).name||'User')};const b=$('rpb');b.firstChild.textContent='↩ '+replyTo.n+': '+replyTo.x;b.hidden=false;$('inp').focus()}
+function clearReply(){replyTo=null;$('rpb').hidden=true}$('rpx').onclick=clearReply;
+function react(ref,m){ref.update({['r_'+me]:m['r_'+me]?firebase.firestore.FieldValue.delete():1}).catch(()=>alert('Could not react.'))}
+function fwd(m){const b=$('mn');b.innerHTML='<div class="sheet"><b style="display:block;padding:8px">Forward to</b></div>';const sh=b.firstChild;
+  const dest=[...conList().filter(k=>people[k]&&!blockedList().includes(k)).map(k=>[people[k].name||'User',[me,k].sort().join('_'),[k]]),...Object.entries(groups).map(([k,g])=>[g.name,'g_'+k,g.members.filter(x=>x!==me)])];
+  dest.forEach(([n,c,to])=>{const x=document.createElement('button');x.textContent=n;x.onclick=async()=>{b.style.display='none';const t=Date.now(),o={u:me,t,fw:1};['x','k','d'].forEach(f=>{if(m[f])o[f]=m[f]});const tx=m.k==='img'?'📷 Photo':m.k==='aud'?'🎤 Voice note':m.x;
+    try{await db.collection('chats/'+c+'/messages').add(o);push(to,myName||'UK Love',tx);await db.doc('last/'+c).set({u:me,t,n:myName||'Friend',x:tx});flash('Forwarded')}catch(e){alert('Could not forward.')}};sh.appendChild(x)});
+  const cx=document.createElement('button');cx.textContent='Cancel';cx.onclick=()=>b.style.display='none';sh.appendChild(cx);b.style.display='flex'}
+
+/* ---------- Date labels, chat search / starred, emoji panel ---------- */
+function dayLbl(t){const d=new Date(t),n=new Date(),y=new Date(Date.now()-864e5);return d.toDateString()===n.toDateString()?'Today':d.toDateString()===y.toDateString()?'Yesterday':d.toLocaleDateString([],{day:'numeric',month:'long',year:d.getFullYear()===n.getFullYear()?undefined:'numeric'})}
+let csStar=false;
+function csFilter(){const q=($('csq').value||'').trim().toLowerCase(),act=!!q||csStar;[...$('msgs').children].forEach(e=>{if(e.classList.contains('m')){const ok=(!q||e.textContent.toLowerCase().includes(q))&&(!csStar||e.dataset.st);e.style.display=!act||ok?'':'none'}else e.style.display=act?'none':''})}
+$('cS').innerHTML=I.search||'🔍';$('cS').onclick=()=>{const b=$('csb');b.hidden=!b.hidden;if(!b.hidden)$('csq').focus();else{$('csq').value='';csStar=false;$('csS').classList.remove('on');csFilter()}};
+$('csq').oninput=csFilter;$('csS').onclick=()=>{csStar=!csStar;$('csS').classList.toggle('on',csStar);csFilter()};$('csx').onclick=()=>{$('csb').hidden=true;$('csq').value='';csStar=false;$('csS').classList.remove('on');csFilter()};
+{const E=Array.from('😀😃😄😁😆😅😂🤣😊😇🙂😉😍🥰😘😗😙😚😋😛😜🤪😎🤩🥳😏😒😞😔😟😕🙁😣😖😫😩🥺😢😭😤😠😡🤬🤯😳🥵🥶😱😨😰😥😓🤗🤔🤭🤫😶😐😑😬🙄😯😴🤤😪😵🤐🤢🤮🤧😷🤒🤕😈👿💀☠️💩🤡👻👽🤖❤️🧡💛💚💙💜🖤🤍💔❣️💕💞💓💗💖💘💝💟💋👍👎👌✌️🤞🤟🤘👏🙌🙏🤝💪👋🤙✋🖐️👀🔥✨⭐🌹🌸🌙☀️🎉🎂🎁🍕☕🥰');const g=$('emo');E.forEach(x=>{const b=document.createElement('button');b.type='button';b.textContent=x;b.onmousedown=ev=>ev.preventDefault();b.onclick=()=>{$('inp').value+=x;$('inp').focus()};g.appendChild(b)});$('emb').onmousedown=ev=>ev.preventDefault();$('emb').onclick=()=>{g.hidden=!g.hidden}}
 /* ---------- Show saved chat list instantly on open ---------- */
 (function(){const u=LS.g('uklast');if(!u||LS.g('fp_'+u))return;const c=safe(()=>JSON.parse(LS.g('ukcache_'+u)));if(!c||!c.p)return;
   me=u;people=c.p||{};lm=c.l||{};groups=c.g||{};myName=(people[me]||{}).name||'';applyCfg();show(true);setMe();renderList()})();
+
+/* ---------- Keep header visible when keyboard opens ---------- */
+(function(){const v=window.visualViewport;if(!v)return;const f=()=>{document.body.style.height=v.height+'px';document.body.style.top=v.offsetTop+'px';window.scrollTo(0,0);if(cur){const m=$('msgs');if(m)m.scrollTop=m.scrollHeight}};v.addEventListener('resize',f);v.addEventListener('scroll',f);window.addEventListener('scroll',()=>window.scrollTo(0,0));f()})();
 </script></body></html>
