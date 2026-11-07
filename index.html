@@ -280,7 +280,7 @@ const onUser=async u=>{
   else go();
 };auth.onAuthStateChanged(u=>{if(!signingUp)onUser(u)});
 function go(){if(started)return;started=true;
-  if(OS_ON){window.OneSignalDeferred=window.OneSignalDeferred||[];OneSignalDeferred.push(async O=>{try{await O.init({appId:OS_APP,serviceWorkerPath:'sw.js',serviceWorkerParam:{scope:location.pathname.replace(/[^/]*$/,'')}});await O.login(me);O.Notifications.requestPermission()}catch(e){}})}$('gate').style.display='none';
+  if(OS_ON){window.OneSignalDeferred=window.OneSignalDeferred||[];OneSignalDeferred.push(async O=>{try{await O.init({appId:OS_APP,serviceWorkerPath:'sw.js',serviceWorkerParam:{scope:location.pathname.replace(/[^/]*$/,'')}});window._O=O;await O.login(me)}catch(e){window._osErr=(e&&e.message)||String(e)}})}$('gate').style.display='none';
   db.collection('calls').where('to','==',me).onSnapshot(sn=>sn.docChanges().forEach(ch=>{const d=ch.doc.data(),id=ch.doc.id;if(!d)return;
     if(d.state==='ringing'&&Date.now()-d.t<40000&&!pc&&!inc&&!blockedList().includes(d.from))showInc(id,d);
     else if(inc&&inc.id===id&&d.s===inc.d.s&&d.state!=='ringing'&&!pc)hideInc()}),()=>{});
@@ -487,7 +487,10 @@ function renderSet(){const S=$('set');S.textContent='';let card;const p=people[m
   const tog=(k,f)=>{const l=document.createElement('label');l.className='sw2';l.innerHTML='<input type="checkbox"><i></i>';const c=l.firstChild;c.checked=!!cfg[k];c.onchange=()=>{cfg[k]=c.checked;saveCfg();if(f)f()};return l};
   const tn=T.map((t,i)=>[i,t[0]]);
   sec('Account');row('user','#2563eb','Name',myName||'',null,async()=>{const n=await dlg('Enter new name',{input:1,value:myName});if(n&&n.trim().length>=3)db.collection('users').doc(me).set({name:n.trim()},{merge:true}).then(renderSet)});row('img','#7c3aed','Profile photo','Change your picture',null,()=>$('meb').click());
-  sec('Notifications');row('bell','#f59e0b','Notifications','Alerts for new messages',tog('notif'));row('vol','#ef4444','Message tone','',sel(tn,cfg.tone,v=>{cfg.tone=+v;saveCfg();playTone(cfg.tone)}));row('phone','#16a34a','Call ringtone','',sel(tn,cfg.ring,v=>{cfg.ring=+v;saveCfg();playTone(cfg.ring)}));row('bell','#0ea5e9','Vibration','',tog('vib'));
+  sec('Notifications');row('bell','#f59e0b','Notifications','Alerts for new messages',tog('notif'));row('bell','#8b5cf6','Phone notifications','Tap to turn on / check',null,async()=>{
+    try{const O=window._O;if(!O){alert('Notification system not ready.\n'+(window._osErr?'Error: '+window._osErr:'Wait 5 seconds and try again, or check your internet.'));return}
+    await O.Notifications.requestPermission();const sub=O.User.PushSubscription;if(O.Notifications.permission&&!sub.optedIn){try{await sub.optIn()}catch(e){}}
+    alert('Permission: '+(O.Notifications.permission?'ON':'OFF - allow notifications in Chrome/phone settings')+'\nSubscribed: '+(sub.optedIn?'YES':'NO')+'\nDevice ID: '+(sub.id||'none yet'))}catch(e){alert('Error: '+((e&&e.message)||e))}});row('vol','#ef4444','Message tone','',sel(tn,cfg.tone,v=>{cfg.tone=+v;saveCfg();playTone(cfg.tone)}));row('phone','#16a34a','Call ringtone','',sel(tn,cfg.ring,v=>{cfg.ring=+v;saveCfg();playTone(cfg.ring)}));row('bell','#0ea5e9','Vibration','',tog('vib'));
   sec('Chats');const WP=['','#e8f5e9','#fff3e0','#e3f2fd','#fce4ec','#263238','linear-gradient(160deg,#0f2744,#0e9f8e)','linear-gradient(160deg,#ff9a9e,#fad0c4)'],wr=document.createElement('div');wr.className='wps';
   WP.forEach(c=>{const d=document.createElement('div');d.className='sw'+(cfg.wp===c?' on':'');d.style.background=c||'var(--bg)';d.onclick=()=>{cfg.wp=c;saveCfg();wr.querySelectorAll('.sw').forEach(x=>x.classList.remove('on'));d.classList.add('on')};wr.appendChild(d)});card.appendChild(wr);
   row('img','#14b8a6','Wallpaper from gallery','Use your own photo',null,()=>$('wpf').click());
