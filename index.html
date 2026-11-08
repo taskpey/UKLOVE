@@ -179,20 +179,59 @@ body>#ft{font-size:13px;padding:9px 12px 11px;margin-top:6px;border-radius:26px 
 .m{font-size:15px;padding:7px 11px}#msgs{padding:10px;gap:5px}form{padding:6px 8px;gap:6px}form input[type=text]{padding:10px 14px;font-size:15px}#send{width:42px;height:42px}
 #title{font-size:17px}#tsub{font-size:11px}.av{font-size:16px}
 .sr,.si{font-size:14px}.sr .st b{font-size:14px}.pn{font-size:18px}.cd{margin:0 12px}
+
+/* ====== v4: poll, call, group ====== */
+.pl{min-width:230px}.plq{font-weight:700;font-size:16px;margin-bottom:2px;overflow-wrap:anywhere}.plh{font-size:12px;opacity:.75;margin-bottom:8px}
+.plo{display:flex;gap:10px;align-items:flex-start;padding:7px 0;cursor:pointer}.plr{width:20px;height:20px;border-radius:50%;border:2px solid #ffffff99;flex:none;margin-top:1px;position:relative}
+.plo.on .plr{background:#fff;border-color:#fff}.plo.on .plr:after{content:'';position:absolute;left:5px;top:2px;width:5px;height:9px;border:solid #b0156f;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+.plb{flex:1;min-width:0}.plt{display:flex;justify-content:space-between;gap:10px;font-size:15px}.plt span{overflow-wrap:anywhere}.m .plt b{display:inline;font-size:13px;color:#fff;font-weight:600}
+.plp{height:5px;border-radius:3px;background:#ffffff26;margin-top:5px;overflow:hidden}.plp i{display:block;height:100%;background:#fff;border-radius:3px;transition:width .3s}
+.plf{border-top:1px solid #ffffff2e;margin-top:6px;padding-top:7px;text-align:center;font-size:13px;opacity:.85}
+#rv{background:radial-gradient(80% 60% at 50% 30%,#4a0a52,#12031a)}#rv.hid{opacity:0}
+#rv::-webkit-media-controls,#rv::-webkit-media-controls-overlay-play-button,#rv::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none}
+#call{background:radial-gradient(80% 60% at 50% 30%,#4a0a52,#12031a)}
+#cav{position:absolute;top:22%;left:50%;transform:translateX(-50%);width:150px;height:150px;font-size:60px;z-index:1;margin:0}#cav svg{width:70px;height:70px}
+#gml input{width:22px;height:22px;accent-color:#ec2f9b;flex:none}#gml .row{margin:6px 4px;padding:8px 12px}#gml .row:after{display:none}
+.ov .sheet input[type=text]{color:var(--t)}
+
+/* ====== v5: black neon glass theme ====== */
+body{background:#000!important}
+body::before{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 780' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3Cfilter id='b' x='-20%25' y='-20%25' width='140%25' height='140%25'%3E%3CfeGaussianBlur stdDeviation='5'/%3E%3C/filter%3E%3ClinearGradient id='w' x1='0' y1='1' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%232b2b30' stop-opacity='0'/%3E%3Cstop offset='.5' stop-color='%233a3a44' stop-opacity='.4'/%3E%3Cstop offset='1' stop-color='%232b2b30' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='360' height='780' fill='%23000'/%3E%3Cpolygon points='-20,430 380,160 380,225 -20,530' fill='url(%23w)'/%3E%3Cpolygon points='-20,800 380,570 380,650 -20,860' fill='url(%23w)'/%3E%3Cg stroke='%23ff2d95' fill='none' stroke-linecap='round'%3E%3Cpath d='M-20 540 L300 330' stroke-width='9' opacity='.35' filter='url(%23b)'/%3E%3Cpath d='M-20 540 L300 330' stroke-width='1.6'/%3E%3Cpath d='M250 120 L385 28' stroke-width='9' opacity='.35' filter='url(%23b)'/%3E%3Cpath d='M250 120 L385 28' stroke-width='1.6'/%3E%3Cpath d='M385 650 L280 745' stroke-width='9' opacity='.35' filter='url(%23b)'/%3E%3Cpath d='M385 650 L280 745' stroke-width='1.6'/%3E%3C/g%3E%3C/svg%3E") center/cover no-repeat!important}
+header{background:linear-gradient(180deg,#0c0c0e,#000)!important;border-bottom:1.5px solid #ff2d9577!important;border-radius:0 0 24px 24px;box-shadow:0 4px 22px rgba(255,45,149,.35)!important}
+header.home{background:radial-gradient(60% 120% at 85% 0,#c2158633,transparent),linear-gradient(180deg,#120a14,#000)!important}
+header button svg{filter:drop-shadow(0 0 5px #ff2d9588)}
+.row{background:linear-gradient(135deg,#17111b,#09090b)!important;border:1.5px solid #ff2d9544!important}
+.m{background:linear-gradient(145deg,#1b1b1f,#0a0a0c)!important;border:1.5px solid #ffffff30!important;border-radius:22px 22px 22px 8px!important;box-shadow:0 4px 14px rgba(0,0,0,.6),inset 0 1px 0 #ffffff14!important;padding:9px 14px}
+.m.me{background:linear-gradient(145deg,#2c1022,#0e070b)!important;border:1.5px solid #ff2d95aa!important;border-radius:22px 22px 8px 22px!important;box-shadow:0 0 14px rgba(255,45,149,.35),inset 0 1px 0 #ff9ad533!important}
+.m small{display:flex;align-items:center;justify-content:flex-end;gap:2px;color:#ffffffb3}
+.tk{display:inline-flex;margin-left:3px}.tk svg{width:16px;height:16px;fill:#ffffffb3}.tk.sn svg{fill:#53bdeb}
+.dsep{background:#0c0c0e!important;border:1.5px solid #ffffff44;box-shadow:0 0 10px #ffffff12;color:#fff;padding:5px 16px;border-radius:18px}
+.sst{background:#0c0c0e;border:1.5px solid #ff2d9588;border-radius:20px;padding:5px 12px!important;font-size:12px;box-shadow:0 0 10px #ff2d9544;color:#fff!important}
+form{background:linear-gradient(180deg,#0d0d10,#000)!important;border-top:1.5px solid #ff2d9566!important;border-radius:26px 26px 0 0;box-shadow:0 -4px 20px rgba(255,45,149,.25)!important;padding:8px 8px 10px!important;gap:5px!important}
+form .ib{width:34px;height:34px;border-radius:50%;justify-content:center;padding:0;flex:none;color:#ff4fb5!important;background:radial-gradient(circle at 30% 25%,#2b1122,#08080a);border:1.5px solid #ff2d95aa;box-shadow:0 0 8px #ff2d9544}
+form .ib svg{width:18px;height:18px}
+form input[type=text]{background:#0c0c0e!important;border:1.5px solid #ff2d9566!important;border-radius:24px;min-width:0}
+#send{width:44px!important;height:44px!important;background:radial-gradient(circle at 30% 25%,#ff6cc0,#d1127f)!important;box-shadow:0 0 16px #ff2d95cc,inset 0 1px 0 #ffffff55!important}
+.plo{background:#ffffff0d;border-radius:12px;padding:9px 10px;margin-top:6px}
+.plr{border-color:#ff2d95!important}.plo.on .plr{border-radius:6px;background:#ff2d95!important;border-color:#ff2d95!important}.plo.on .plr:after{border-color:#fff!important}
+.plp{background:#ffffff1f}.plp i{background:linear-gradient(90deg,#ff2d95,#ff7ac6)!important}
+.cd{background:#0e0e11!important;border:1px solid #ff2d9533!important}
+.dbody h3{color:#ff8fd0;margin:18px 0 4px;font-size:16px}.dbody a{color:#ff8fd0}
+#gpl u{color:#ff9bd5;cursor:pointer}
 </style></head><body>
 <header><div id="brand"><i></i><span><b>UK</b><em>Love</em></span></div><button id="back" hidden>←</button><div id="hav" class="av" hidden style="width:34px;height:34px"></div><div id="tw"><span id="title">UK Love</span><div id="tsub"></div></div><button id="cS" hidden></button><button id="cA" hidden></button><button id="cV" hidden></button><span id="hs"><button id="rf"></button><button id="ng"></button></span><div id="meb" style="display:none"></div><input id="pf" type="file" accept="image/*" hidden><button id="fpb" style="display:none"></button><button id="out" style="display:none"></button></header>
 <div id="list"><div id="sb"><input id="q" placeholder="Search chats…"></div><div id="lr"></div></div><div id="stv"></div><div id="calls"></div><div id="set"></div>
 <div id="chat"><div id="csb" hidden><input id="csq" placeholder="Search in chat…" autocomplete="off"><button type="button" id="csS">⭐</button><button type="button" id="csx">✕</button></div><div id="msgs"></div><div id="blk">You blocked this contact. <b>Tap to unblock</b></div>
-<div id="emo" hidden></div><div id="rpb" hidden><span></span><button type="button" id="rpx">✕</button></div><form id="f"><button type="button" class="ib" id="pic">📷</button><input id="file" type="file" accept="image/*" hidden><button type="button" class="ib" id="mic">🎤</button><button type="button" class="ib" id="emb">😊</button><input id="inp" type="text" placeholder="Type a message…" autocomplete="off"><button id="send" type="submit">➤</button></form></div>
+<div id="emo" hidden></div><div id="rpb" hidden><span></span><button type="button" id="rpx">✕</button></div><form id="f"><button type="button" class="ib" id="gal"></button><button type="button" class="ib" id="pic"></button><button type="button" class="ib" id="pol"></button><button type="button" class="ib" id="mic"></button><button type="button" class="ib" id="emb"></button><input id="file" type="file" accept="image/*" hidden><input id="filec" type="file" accept="image/*" capture="environment" hidden><input id="inp" type="text" placeholder="Type a message…" autocomplete="off"><button id="send" type="submit"></button></form></div>
 <nav id="tabs"><button class="on" data-t="chats"></button><button data-t="status"></button><button data-t="calls"></button><button data-t="set"></button></nav>
 <div id="gate"><img id="lg" src="icon-192.png" alt=""><h2>UK Love</h2><div id="gt" style="text-align:center;font-weight:600">Login</div>
 <input id="gu" placeholder="Username, email or phone number" autocomplete="username" autocapitalize="none"><input id="ge" type="text" placeholder="Email or phone number" autocomplete="email" autocapitalize="none" style="display:none"><input id="gp" type="password" placeholder="Password" autocomplete="current-password">
-<button class="bt" id="gb">Login</button><button class="lk" id="gs">Create new account</button><button class="bt" id="gf" style="display:none">👆 Unlock with fingerprint</button><button class="lk" id="gfp">Forgot password?</button><button class="bt" id="gv" style="display:none">I've verified my email</button><button class="lk" id="gr" style="display:none">Resend verification email</button><button class="lk" id="gl" style="display:none">Log out</button><div id="gm"></div><div id="ft">This app made by UMAR RAJPOOT ❤️</div></div>
+<button class="bt" id="gb">Login</button><button class="lk" id="gs">Create new account</button><button class="bt" id="gf" style="display:none">👆 Unlock with fingerprint</button><button class="lk" id="gfp">Forgot password?</button><button class="bt" id="gv" style="display:none">I've verified my email</button><button class="lk" id="gr" style="display:none">Resend verification email</button><button class="lk" id="gl" style="display:none">Log out</button><div id="gm"></div><div id="gpl" style="text-align:center;font-size:13px;opacity:.85;padding:0 10px">By continuing you agree to the <u>Privacy Policy</u> and <u>Terms</u></div><div id="ft">This app made by UMAR RAJPOOT ❤️</div></div>
 <div id="ft"><span>💗 This app made by UMAR RAJPOOT ❤️</span></div>
-<div id="call"><video id="rv" autoplay playsinline></video><video id="lv" autoplay playsinline muted></video><div id="cn"><div id="cnn"></div><div id="cs"></div></div><div class="cb"><button id="cm">🎤</button><button id="ce" class="red">📵</button></div></div>
+<div id="call"><video id="rv" autoplay playsinline poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"></video><div id="cav" class="av big"></div><video id="lv" autoplay playsinline muted></video><div id="cn"><div id="cnn"></div><div id="cs"></div></div><div class="cb"><button id="cm">🎤</button><button id="ce" class="red">📵</button></div></div>
 <div id="inc"><div id="inph" class="av big"></div><h2 id="in"></h2><div id="it"></div><div class="cb"><button id="ir" class="red">✖</button><button id="ia" class="grn">✔</button></div></div>
 <input type="file" id="stf" accept="image/*" hidden><div id="sv"><div id="svb"></div><div id="svh"><div class="av" id="svav"></div><div><b id="svn"></b><small id="svt"></small></div><button id="svx"></button></div><div id="svm"><div id="svc"></div><div id="svl"></div><div id="svr"></div></div><div id="svf"><span id="svc2"></span><button id="svd"></button></div><div id="svq"><div id="sve"></div><div id="svi"><input type="text" id="svin" placeholder="Reply to status…" autocomplete="off"><button type="button" id="svs"></button></div></div></div>
-<div class="ov" id="mn"></div><div class="ov" id="gm2"><div class="sheet"><b style="display:block;padding:8px">New Group</b><input type="text" id="gn" placeholder="Group name"><div id="gl"></div><button id="gc" style="color:var(--bar);font-weight:700">Create group</button><button id="gx">Cancel</button></div></div><div class="ov" id="lb"><img id="lbi"><div id="lbar" style="position:absolute;bottom:0;left:0;right:0;display:flex;gap:10px;justify-content:center;padding:14px"></div></div><input type="file" id="wpf" accept="image/*" hidden>
+<div class="ov" id="mn"></div><div class="ov" id="gm2"><div class="sheet"><b style="display:block;padding:8px">New Group</b><input type="text" id="gn" placeholder="Group name"><div id="gml"></div><button id="gaf" style="color:var(--bar)">➕ Add friend by username</button><button id="gc" style="color:var(--bar);font-weight:700">Create group</button><button id="gx">Cancel</button></div></div><div class="ov" id="lb"><img id="lbi"><div id="lbar" style="position:absolute;bottom:0;left:0;right:0;display:flex;gap:10px;justify-content:center;padding:14px"></div></div><input type="file" id="wpf" accept="image/*" hidden>
 <div id="prof"></div><div id="toast"></div>
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -218,9 +257,10 @@ function closeLayer(f){const i=layers.lastIndexOf(f);if(i<0)return;layers.splice
 window.addEventListener('popstate',()=>{if(hbusy){hbusy=false;hsync();return}depth=Math.max(0,depth-1);const f=layers.pop();if(f)f();hsync()});
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 const OS_APP="99e6aa1b-64bd-41f6-a87f-90c0e392d005",PUSH_URL="https://uklove-push.umardrazofficial12.workers.dev",OS_ON=OS_APP!=="PASTE_HERE";
-function push(to,title,body,ex){if(PUSH_URL===""||!to||!to.length||!auth.currentUser)return;auth.currentUser.getIdToken().then(t=>fetch(PUSH_URL,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+t},body:JSON.stringify({to,title,body,call:!!(ex&&ex.priority)})})).catch(()=>{})}
+function push(to,title,body,ex){if(PUSH_URL===""||!to||!to.length||!auth.currentUser)return;auth.currentUser.getIdToken().then(t=>fetch(PUSH_URL,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+t},body:JSON.stringify({to,title,body,call:!!(ex&&ex.priority),cid:(ex&&ex.cid)||undefined})})).catch(()=>{})}
 firebase.initializeApp(firebaseConfig);
 const auth=firebase.auth(),db=firebase.firestore();
+try{db.settings({experimentalAutoDetectLongPolling:true,merge:true})}catch(e){}
 db.enablePersistence({synchronizeTabs:true}).catch(()=>{});
 let me,myName='',people={},unsub=null,cur='',curId='',t0=Date.now(),started=false,signup=false,fpOk=false;
 const sv=p=>'<svg viewBox="0 0 24 24"><path d="'+p+'"/></svg>';
@@ -237,7 +277,7 @@ const b64=b=>btoa(String.fromCharCode(...new Uint8Array(b))),unb=x=>Uint8Array.f
 
 function dlg(msg,o={}){return new Promise(res=>{const b=document.createElement('div');b.className='ov';b.style.cssText='display:flex;align-items:center;z-index:99';
   b.innerHTML='<div class="sheet" style="border-radius:16px;max-width:340px;margin:0 20px;padding:18px"><b class="dt"></b><p class="dm" style="margin:10px 0"></p><input type="text" class="di" style="display:none"><div class="db" style="display:flex;gap:8px;justify-content:flex-end"></div></div>';
-  const q=x=>b.querySelector(x),inp=q('.di');q('.dt').textContent=myName||'UK Love App';q('.dm').textContent=msg;if(o.input){inp.style.display='block';inp.value=o.value||''}
+  const q=x=>b.querySelector(x),inp=q('.di');q('.dt').textContent=myName||'UK Love App';q('.dm').textContent=msg;if(o.input){inp.style.display='block';inp.value=o.value||'';if(o.pw)inp.type='password'}
   const done=v=>{b.remove();res(v)},mk=(t,v,pri)=>{const x=document.createElement('button');x.textContent=t;x.style.cssText='width:auto;padding:10px 16px;font-size:15px;font-weight:600;color:'+(pri?'var(--bar)':'var(--mute)');x.onclick=()=>done(v===true&&o.input?inp.value:v);q('.db').appendChild(x)};
   if(o.confirm||o.input)mk('Cancel',o.input?null:false);mk('OK',true,1);document.body.appendChild(b)})}
 window.alert=m=>{dlg(String(m))};
@@ -246,7 +286,7 @@ const setMode=()=>{$('gt').textContent=signup?'Create new account':'Login';$('gb
 $('gs').onclick=()=>{signup=!signup;setMode()};setMode();
 $('gfp').onclick=async()=>{const v=$('gu').value.trim(),e=await dlg('Enter your email address. We will send you a password reset link.',{input:1,value:v.includes('@')?v:''});if(!e||!e.includes('@'))return;
   try{await auth.sendPasswordResetEmail(e.trim());alert('If an account exists for that email, a reset link has been sent. Check your inbox and spam folder.')}catch(x){alert('Could not send the reset email. Check the address and your internet connection.')}};
-$('gb').onclick=async()=>{const u=$('gu').value.trim(),p=$('gp').value,M=$('gm'),em=$('ge').value.trim();M.textContent='';
+const gbRun=async()=>{const u=$('gu').value.trim(),p=$('gp').value,M=$('gm'),em=$('ge').value.trim();M.textContent='';
   try{
     if(signup){
       if(u.length<3||p.length<6){M.textContent='Username must be 3+ characters and password 6+ characters.';return}
@@ -254,10 +294,11 @@ $('gb').onclick=async()=>{const u=$('gu').value.trim(),p=$('gp').value,M=$('gm')
       signingUp=true;let c;try{c=await auth.createUserWithEmailAndPassword(isPh?mail(ph):em,p)}catch(e){signingUp=false;throw e}
       const q=await db.collection('users').where('name','==',u).get();
       if(q.docs.some(d=>d.id!==c.user.uid)){await c.user.delete();signingUp=false;M.textContent='This username is already taken.';return}
-      await db.collection('users').doc(c.user.uid).set({name:u,contacts:[]});try{await c.user.sendEmailVerification()}catch(e){}
+      db.collection('users').doc(c.user.uid).set({name:u,contacts:[]}).catch(()=>alert('Could not save your profile. Check your internet connection.'));c.user.sendEmailVerification().catch(()=>{});
       signingUp=false;fpOk=true;onUser(auth.currentUser)}
     else{if(!u||p.length<6){M.textContent='Enter your email or username and your password.';return}await auth.signInWithEmailAndPassword(u.includes('@')?u:(emFor(u)||mail(u)),p);fpOk=true}
   }catch(e){M.textContent=e.code==='auth/email-already-in-use'?'This email or number is already registered.':e.code==='auth/invalid-email'?'Enter a valid email address.':e.code==='auth/network-request-failed'?'Check your internet connection.':e.code==='auth/weak-password'?'Password is too weak.':e.code==='auth/too-many-requests'?'Too many attempts. Try again later.':'Incorrect email/username or password.'}};
+$('gb').onclick=async()=>{const b=$('gb'),t0=b.textContent;b.disabled=true;b.textContent='Please wait…';try{await gbRun()}finally{b.disabled=false;b.textContent=t0}};
 async function enableFp(uid,name){
   try{const c=await navigator.credentials.create({publicKey:{challenge:crypto.getRandomValues(new Uint8Array(32)),rp:{name:'UK Love App'},user:{id:crypto.getRandomValues(new Uint8Array(16)),name:name||'user',displayName:name||'user'},pubKeyCredParams:[{type:'public-key',alg:-7},{type:'public-key',alg:-257}],authenticatorSelection:{authenticatorAttachment:'platform',userVerification:'required'},timeout:60000}});
     LS.s('fp_'+uid,b64(c.rawId));alert('Fingerprint lock on ✅')}catch(e){alert('Fingerprint could not be enabled on this phone.')}}
@@ -283,6 +324,7 @@ const onUser=async u=>{
 };auth.onAuthStateChanged(u=>{if(!signingUp)onUser(u)});
 function go(){if(started)return;started=true;
   if(window._NAT){window._step='start';window._diag=()=>'step='+window._step+', cordova='+typeof window.cordova+', plugins='+Object.keys(window.plugins||{}).join('|')+', OneSignal='+typeof window.OneSignal+', init='+typeof(window.OneSignal&&window.OneSignal.initialize)+', pinit='+typeof(window.plugins&&window.plugins.OneSignal&&window.plugins.OneSignal.initialize)+(window._osErr?', err='+window._osErr:'');const tryInit=()=>{if(window._N)return true;const N=(window.plugins&&window.plugins.OneSignal&&window.plugins.OneSignal.initialize&&window.plugins.OneSignal)||(window.OneSignal&&window.OneSignal.initialize&&window.OneSignal);if(!N)return false;window._step='found';try{N.initialize(OS_APP);window._N=N;window._step='initialized';try{N.login(me);window._step='login'}catch(e){window._osErr='login: '+((e&&e.message)||e)}try{N.Notifications.requestPermission(true);window._step='perm'}catch(e){window._osErr='perm: '+((e&&e.message)||e)}}catch(e){window._osErr='init: '+((e&&e.message)||String(e))}return true};let n=0;const t=setInterval(()=>{if(window._step==='start')window._step='polling';if(tryInit()||++n>120)clearInterval(t)},500);document.addEventListener('deviceready',tryInit)}else if(OS_ON){window.OneSignalDeferred=window.OneSignalDeferred||[];OneSignalDeferred.push(async O=>{try{await O.init({appId:OS_APP,serviceWorkerPath:location.pathname.replace(/[^/]*$/,'')+'sw.js',serviceWorkerParam:{scope:location.pathname.replace(/[^/]*$/,'')}});window._O=O;await O.login(me)}catch(e){window._osErr=(e&&e.message)||String(e)}})}$('gate').style.display='none';
+  db.doc('users/'+me).get().then(d=>{if(d.exists&&!people[me]){people[me]=d.data();myName=people[me].name||'';setMe();renderList()}}).catch(()=>{});
   db.collection('calls').where('to','==',me).onSnapshot(sn=>sn.docChanges().forEach(ch=>{const d=ch.doc.data(),id=ch.doc.id;if(!d)return;
     if(d.state==='ringing'&&Date.now()-d.t<40000&&!pc&&!inc&&!blockedList().includes(d.from))showInc(id,d);
     else if(inc&&inc.id===id&&d.s===inc.d.s&&d.state!=='ringing'&&!pc)hideInc()}),()=>{});
@@ -358,9 +400,9 @@ function openChat(id,name){
         if(m.k==='img'&&m.once){const t=document.createElement('div');t.style.cssText='padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.12)';const seen=m['v_'+me]||!m.d;if(m.u===me)t.textContent='👁 Photo (view once)';else if(seen)t.textContent='👁 Opened';else{t.textContent='👁 Tap to view photo (once)';t.style.cursor='pointer';t.onclick=()=>{openLB(m,1);db.doc('chats/'+cur+'/messages/'+d.id).update({['v_'+me]:1,...(isG?{}:{d:firebase.firestore.FieldValue.delete()})}).catch(()=>{})}}el.appendChild(t)}
          else if(m.k==='img'){const i=document.createElement('img');i.src=m.d;i.onclick=()=>openLB(m);el.appendChild(i)}
         else if(m.k==='aud'){const a=document.createElement('audio');a.controls=true;a.src=m.d;el.appendChild(a)}
-        else if(m.k==='poll'){const q=document.createElement('b');q.textContent='📊 '+m.q;el.appendChild(q);const vs=Object.keys(m).filter(k=>k.startsWith('pv_')),tot=vs.length;(m.o||[]).forEach((t,i)=>{const n=vs.filter(k=>m[k]===i).length,b=document.createElement('button');b.style.cssText='display:block;width:100%;margin:6px 0 0;padding:9px;border:0;border-radius:8px;text-align:left;color:inherit;background:linear-gradient(90deg,rgba(255,77,166,.5) '+(tot?n*100/tot:0)+'%,rgba(255,255,255,.12) 0)';b.textContent=(m['pv_'+me]===i?'✅ ':'')+t+'  ('+n+')';b.onclick=()=>db.doc('chats/'+cur+'/messages/'+d.id).update({['pv_'+me]:i}).catch(()=>alert('Vote failed'));el.appendChild(b)})}
+        else if(m.k==='poll'){renderPoll(el,m,d.id)}
          else el.appendChild(document.createTextNode(m.x||''))}
-      const sm=document.createElement('small');sm.textContent=new Date(m.t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})+(m.ed&&!m.del?' · edited':'')+(m['s_'+me]?' ⭐':'');if(m['s_'+me])el.dataset.st='1';el.appendChild(sm);
+      const sm=document.createElement('small');sm.textContent=new Date(m.t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})+(m.ed&&!m.del?' · edited':'')+(m['s_'+me]?' ⭐':'');if(m.u===me&&!m.del){const sn=(m.sn||[]).filter(x=>x!==me),tk=document.createElement('span');tk.className='tk'+(sn.length?' sn':'');tk.innerHTML=d.metadata.hasPendingWrites?CLK:sn.length?DONE2:DONE1;sm.appendChild(tk)}if(m['s_'+me])el.dataset.st='1';el.appendChild(sm);
       const rc=Object.keys(m).filter(k=>k.startsWith('r_')&&m[k]).length;if(rc&&!m.del){const r=document.createElement('span');r.className='rx';r.textContent='❤️'+(rc>1?' '+rc:'');el.appendChild(r)}el.ondblclick=()=>{if(!m.del)react(db.doc('chats/'+cur+'/messages/'+d.id),m)};
       {let sx=0,sy=0,sw=0;el.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY;sw=0},{passive:true});el.addEventListener('touchmove',e=>{const dx=e.touches[0].clientX-sx,dy=Math.abs(e.touches[0].clientY-sy);if(dy<25&&dx>0){sw=dx;el.style.transform='translateX('+Math.min(dx,70)+'px)'}},{passive:true});el.addEventListener('touchend',()=>{el.style.transform='';if(sw>70&&!m.del){setReply(m);safe(()=>navigator.vibrate&&navigator.vibrate(20))}sw=0})}
       if(m.u===me&&!m.del)lastMine=m;
@@ -377,15 +419,20 @@ function openChat(id,name){
   const u2=db.doc('typing/'+cur).onSnapshot(sn=>{const d=sn.data();tpT=d&&d.u!==me?d.t:0;subline()});unsub=()=>{u1();u2()}}
 function menu(id,m){const b=$('mn');if(b.style.display==='flex')return;b.innerHTML='<div class="sheet"></div>';const sh=b.firstChild,ref=db.doc('chats/'+cur+'/messages/'+id);
   const add=(t,f,red)=>{const x=document.createElement('button');x.textContent=t;if(red)x.style.color='#e03131';x.onclick=()=>{b.style.display='none';if(f)f()};sh.appendChild(x)};
-  if(!m.del){add('Reply',()=>setReply(m));add(m['r_'+me]?'Remove ❤️':'❤️ React',()=>react(ref,m));add(m['s_'+me]?'Remove star ⭐':'⭐ Star',()=>ref.update({['s_'+me]:m['s_'+me]?firebase.firestore.FieldValue.delete():true}).catch(()=>alert('Could not star.')));if(m.u===me&&!m.k&&m.x)add('Edit',()=>{const v=prompt('Edit message',m.x);if(v!==null&&v.trim()&&v.trim()!==m.x)ref.update({x:v.trim(),ed:true}).catch(()=>alert('Could not edit.'))});if(m.x||m.k)add('Forward',()=>fwd(m))}add('Delete for me',()=>ref.update({['h_'+me]:true}),1);if(m.u===me&&!m.del)add('Delete for everyone',()=>ref.update({del:true,x:'',d:firebase.firestore.FieldValue.delete()}),1);add('Cancel');b.style.display='flex'}
+  if(!m.del){add('Reply',()=>setReply(m));add(m['r_'+me]?'Remove ❤️':'❤️ React',()=>react(ref,m));add(m['s_'+me]?'Remove star ⭐':'⭐ Star',()=>ref.update({['s_'+me]:m['s_'+me]?firebase.firestore.FieldValue.delete():true}).catch(()=>alert('Could not star.')));if(m.u===me&&!m.k&&m.x)add('Edit',()=>{const v=prompt('Edit message',m.x);if(v!==null&&v.trim()&&v.trim()!==m.x)ref.update({x:v.trim(),ed:true}).catch(()=>alert('Could not edit.'))});if(m.x&&!m.k)add('Copy',()=>{safe(()=>navigator.clipboard.writeText(m.x));flash('Copied')});if(m.x||m.k)add('Forward',()=>fwd(m))}add('Delete for me',()=>ref.update({['h_'+me]:true}),1);if(m.u===me&&!m.del)add('Delete for everyone',()=>ref.update({del:true,x:'',d:firebase.firestore.FieldValue.delete()}),1);add('Cancel');b.style.display='flex'}
 $('mn').onclick=e=>{if(e.target.id==='mn')$('mn').style.display='none'};$('lb').onclick=e=>{if(!e.target.closest('#lbar'))$('lb').style.display='none'};
 $('inp').addEventListener('input',()=>{if(cur&&Date.now()-lt>2500){lt=Date.now();db.doc('typing/'+cur).set({u:me,t:lt}).catch(()=>{})}});
 $('rf').onclick=()=>location.reload();
 let mkComm=false,subOf=null;
-function newGroup(c,of){mkComm=c===1;subOf=of||null;$('gm2').querySelector('b').textContent=mkComm?'New Community':subOf?'New group in community':'New Group';$('gc').textContent=mkComm?'Create community':'Create group';$('gm2').style.display='flex';const L=$('gl');L.textContent='';$('gn').value='';
-  const con2=subOf?(groups[subOf]||{members:[]}).members:conList();Object.entries(people).filter(([k])=>k!==me&&con2.includes(k)).forEach(([k,v])=>{const lb=document.createElement('label');lb.className='row';lb.innerHTML='<input type="checkbox" value="'+k+'"><span></span>';lb.querySelector('span').textContent=v.name||'User';L.appendChild(lb)});if(!L.children.length)L.innerHTML='<div class="note">Add friends first, then create a group.</div>'}
+function gRow(k,on){const L=$('gml');if(L.querySelector('input[value="'+k+'"]'))return;const lb=document.createElement('label');lb.className='row';lb.innerHTML='<input type="checkbox" value="'+k+'"><span></span>';lb.querySelector('input').checked=!!on;lb.querySelector('span').textContent=(people[k]||{}).name||'User';L.appendChild(lb)}
+function newGroup(c,of){mkComm=c===1;subOf=of||null;$('gm2').querySelector('b').textContent=mkComm?'New Community':subOf?'New group in community':'New Group';$('gc').textContent=mkComm?'Create community':'Create group';$('gm2').style.display='flex';const L=$('gml');L.textContent='';$('gn').value='';$('gaf').style.display=subOf?'none':'';
+  const con2=subOf?(groups[subOf]||{members:[]}).members:conList();Object.keys(people).filter(k=>k!==me&&con2.includes(k)).forEach(k=>gRow(k,false))}
+$('gaf').onclick=async()=>{const v=await dlg("Friend's username",{input:1});if(!v||!v.trim())return;const n=v.trim(),q=n.toLowerCase();let id=Object.keys(people).find(k=>k!==me&&(people[k].name||'').toLowerCase()===q);
+  if(!id){try{const sn=await db.collection('users').where('name','==',n).get();const d=sn.docs.find(x=>x.id!==me);if(d){id=d.id;people[id]=d.data()}}catch(e){}}
+  if(!id){alert('No user found with the username "'+n+'".');return}
+  const cs=conList();if(!cs.includes(id))db.doc('users/'+me).set({contacts:[...cs,id]},{merge:true}).catch(()=>{});gRow(id,true);flash((people[id].name||n)+' added')};
 $('ng').onclick=()=>{const b=$('mn');b.innerHTML='<div class="sheet"></div>';const sh=b.firstChild,add=(t,f)=>{const x=document.createElement('button');x.textContent=t;x.onclick=()=>{b.style.display='none';if(f)f()};sh.appendChild(x)};add('Add friend (by username)',addFriend);add('New group',()=>newGroup());add('New community',()=>newGroup(1));add('Cancel');b.style.display='flex'};
-$('gc').onclick=async()=>{const n=$('gn').value.trim(),m=[...$('gl').querySelectorAll('input:checked')].map(x=>x.value);if(!n||!m.length){alert('Enter a group name and select at least one friend.');return}
+$('gc').onclick=async()=>{const n=$('gn').value.trim(),m=[...$('gml').querySelectorAll('input:checked')].map(x=>x.value);if(!n||!m.length){alert('Enter a group name and select at least one friend.');return}
   try{await db.collection('groups').add({name:n,members:[me,...m],by:me,t:Date.now(),...(mkComm?{community:true}:{}),...(subOf?{comm:subOf}:{})});$('gm2').style.display='none'}catch(e){alert('Could not create group.')}};
 $('gx').onclick=()=>$('gm2').style.display='none';
 function openCom(id){const g=groups[id];if(!g)return;const b=$('mn');b.innerHTML='<div class="sheet"></div>';const sh=b.firstChild,H=document.createElement('b');H.style.cssText='display:block;padding:8px';H.textContent='🏘 '+g.name+' · '+g.members.length+' members';sh.appendChild(H);
@@ -516,6 +563,7 @@ function renderSet(){const S=$('set');S.textContent='';let card;const p=people[m
   row('img','#14b8a6','Wallpaper from gallery','Use your own photo',null,()=>$('wpf').click());
   sec('Appearance');row('moon','#475569','Theme','',sel([['auto','Auto'],['light','Light'],['dark','Dark']],cfg.theme,v=>{cfg.theme=v;saveCfg()}));
   sec('Privacy & Security');row('eye','#0891b2','Hide online / last seen','Also hides your Seen status from others',tog('hideSeen',()=>{if(cfg.hideSeen)db.collection('users').doc(me).set({seen:0},{merge:true})}));row('lock','#059669','Fingerprint lock','Unlock the app with your fingerprint',null,()=>$('fpb').click());
+  sec('About & Support');row('shield','#0ea5e9','Privacy Policy','How we handle your data',null,()=>showDoc('Privacy Policy',POLICY));row('doc','#8b5cf6','Terms of Use','Rules for using UK Love',null,()=>showDoc('Terms of Use',TERMS));row('mail','#ec4899','Contact & Support','umardrazofficial12@gmail.com',null,()=>{location.href='mailto:umardrazofficial12@gmail.com?subject=UK%20Love%20Support'});row('info','#64748b','About UK Love','Version 2.0 · Made by UMAR RAJPOOT',null,()=>alert('UK Love v2.0. Made by UMAR RAJPOOT. Support: umardrazofficial12@gmail.com'));row('trash','#e03131','Delete my account','Permanently remove your account',null,delAcc).classList.add('lo');
   sec('');row('logout','#e03131','Log out','',null,()=>$('out').click()).classList.add('lo');
   const ab=document.createElement('div');ab.className='note';ab.textContent='This app made by UMAR RAJPOOT ❤️';S.appendChild(ab)}
 $('wpf').onchange=e=>{const f=e.target.files[0];e.target.value='';if(!f)return;const im=new Image();im.onload=()=>{const sc=Math.min(1,900/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*sc;c.height=im.height*sc;c.getContext('2d').drawImage(im,0,0,c.width,c.height);LS.s('ukwp',c.toDataURL('image/jpeg',.6));cfg.wp='img';saveCfg()};im.src=URL.createObjectURL(f)};
@@ -533,9 +581,9 @@ $('pf').onchange=e=>{const f=e.target.files[0];e.target.value='';if(!f)return;co
   im.src=URL.createObjectURL(f)};
 
 /* ---------- Photo & Voice (stored as small files in Firestore) ---------- */
-$('pic').onclick=()=>$('file').click();
-$('file').onchange=e=>{const f=e.target.files[0];e.target.value='';if(!f)return;const im=new Image();im.onload=()=>openEd(im);im.src=URL.createObjectURL(f)};
-{const pb=document.createElement('button');pb.type='button';pb.className=$('pic').className;pb.textContent='📊';pb.onclick=async()=>{const q=await dlg('Poll question',{input:1});if(!q||!q.trim())return;const o=await dlg('Options (separate with commas)',{input:1});const a=(o||'').split(',').map(x=>x.trim()).filter(Boolean).slice(0,6);if(a.length<2){alert('Enter at least 2 options');return}post({k:'poll',q:q.trim(),o:a})};$('pic').parentNode.insertBefore(pb,$('pic'))}
+$('pic').onclick=()=>$('filec').click();$('gal').onclick=()=>$('file').click();
+const onImg=e=>{const f=e.target.files[0];e.target.value='';if(!f)return;const im=new Image();im.onload=()=>openEd(im);im.src=URL.createObjectURL(f)};$('file').onchange=onImg;$('filec').onchange=onImg;
+$('pol').onclick=openPoll;
 function openLB(m,once){$('lbi').src=m.d;const b=$('lbar');b.textContent='';const A=(t,f)=>{const x=document.createElement('button');x.textContent=t;x.style.cssText='padding:10px 16px;border-radius:12px;border:0;background:#ffffff26;color:#fff;font-size:15px';x.onclick=f;b.appendChild(x)};
   if(!once){A('⬇ Save',()=>{const a=document.createElement('a');a.href=m.d;a.download='UKLove_'+Date.now()+'.jpg';document.body.appendChild(a);a.click();a.remove()});A('↪ Forward',()=>{$('lb').style.display='none';fwd(m)});A('↩ Reply',()=>{$('lb').style.display='none';setReply(m)})}
   $('lb').style.display='flex'}
@@ -558,6 +606,54 @@ function openEd(im){const c=document.createElement('canvas'),sc=Math.min(1,800/M
   B('👁 Once: off',b=>{once=!once;b.textContent='👁 Once: '+(once?'on':'off')});
   B('✖ Cancel',()=>o.remove());const sb=B('Send ➤',()=>{post({k:'img',d:c.toDataURL('image/jpeg',.6),...(once?{once:1}:{})});o.remove()});sb.style.background='#e0338f';
   o.appendChild(w);o.appendChild(bar);document.body.appendChild(o)}
+function renderPoll(el,m,id){const vs=Object.keys(m).filter(k=>k.startsWith('pv_')&&typeof m[k]==='number'),tot=vs.length,my=m['pv_'+me],ref=db.doc('chats/'+cur+'/messages/'+id);
+  const w=document.createElement('div');w.className='pl';
+  const q=document.createElement('div');q.className='plq';q.textContent=m.q;w.appendChild(q);
+  const h=document.createElement('div');h.className='plh';h.textContent='Select one';w.appendChild(h);
+  (m.o||[]).forEach((t,i)=>{const n=vs.filter(k=>m[k]===i).length,pc=tot?Math.round(n*100/tot):0,r=document.createElement('div');r.className='plo'+(my===i?' on':'');
+    r.innerHTML='<span class="plr"></span><div class="plb"><div class="plt"><span></span><b></b></div><div class="plp"><i></i></div></div>';
+    r.querySelector('.plt span').textContent=t;r.querySelector('.plt b').textContent=n;r.querySelector('.plp i').style.width=pc+'%';
+    r.onclick=()=>ref.update({['pv_'+me]:my===i?firebase.firestore.FieldValue.delete():i}).catch(()=>alert('Vote failed'));w.appendChild(r)});
+  const f=document.createElement('div');f.className='plf';f.textContent=tot+(tot===1?' vote':' votes');w.appendChild(f);el.appendChild(w)}
+function openPoll(){const b=document.createElement('div');b.className='ov';b.style.cssText='display:flex;align-items:center;z-index:99';
+  b.innerHTML='<div class="sheet" style="border-radius:16px;max-width:360px;margin:0 16px;padding:16px;text-align:left"><b style="display:block;font-size:18px;margin-bottom:8px">Create poll</b><input type="text" class="pq" maxlength="120" placeholder="Ask a question"><div class="po"></div><button type="button" class="pa" style="color:var(--bar);text-align:left;padding:10px 4px">➕ Add option</button><div style="display:flex;gap:8px;justify-content:flex-end"><button type="button" class="px" style="width:auto;padding:10px 16px;color:var(--mute)">Cancel</button><button type="button" class="pk" style="width:auto;padding:10px 16px;color:var(--bar);font-weight:700">Send</button></div></div>';
+  const q=b.querySelector('.pq'),O=b.querySelector('.po'),add=()=>{if(O.children.length>=8)return;const i=document.createElement('input');i.type='text';i.maxLength=60;i.placeholder='Option '+(O.children.length+1);O.appendChild(i)};add();add();
+  b.querySelector('.pa').onclick=add;b.querySelector('.px').onclick=()=>b.remove();
+  b.querySelector('.pk').onclick=()=>{const t=q.value.trim(),a=[...O.querySelectorAll('input')].map(x=>x.value.trim()).filter(Boolean);if(!t){alert('Enter a question');return}if(a.length<2){alert('Enter at least 2 options');return}b.remove();post({k:'poll',q:t,o:a})};
+  document.body.appendChild(b)}
+const POLICY=`<p style="opacity:.7">Last updated: 8 November 2026</p>
+<h3>1. Who we are</h3><p>UK Love is a chat and calling app made by UMAR RAJPOOT. For any question, contact us at <a href="mailto:umardrazofficial12@gmail.com">umardrazofficial12@gmail.com</a>.</p>
+<h3>2. Information we collect</h3><p><b>Account:</b> your username and the email address or phone number you sign up with. Your password is handled by Firebase Authentication, we never see it in plain text.</p>
+<p><b>Profile:</b> display name, the "About" line and profile photo you choose.</p>
+<p><b>Content:</b> messages, photos, voice notes, polls and status updates you send, plus a call history (who, when, how long). Call audio and video are not recorded.</p>
+<p><b>Activity:</b> online / last seen, typing and "seen" status. You can hide last seen in Settings.</p>
+<p><b>Device:</b> a notification ID (through OneSignal) linked to your user ID so we can deliver notifications.</p>
+<h3>3. Permissions</h3><p>Camera (photos and video calls), Microphone (voice notes and calls) and Notifications. They are used only when you use those features. You can change them anytime in your phone settings.</p>
+<h3>4. How we use information</h3><p>To run the app, deliver your messages and calls, send notifications, show your contacts, handle reports and blocks, and give you support.</p>
+<h3>5. Services we use</h3><p>Google Firebase (Authentication and Cloud Firestore) stores accounts and chats. OneSignal and a Cloudflare Worker send notifications. STUN/TURN servers help connect calls; calls go directly between devices when possible, otherwise they may pass through a relay server. GitHub Pages hosts the app files.</p>
+<h3>6. Security</h3><p>Data is sent over HTTPS. Messages are stored on Firebase servers and are <b>not end-to-end encrypted</b>, so please do not share passwords, card or bank details in chats.</p>
+<h3>7. Sharing</h3><p>We do not sell your data and we do not show ads. Other users can see your name, photo, About line, online status and the messages you send them. The services in section 5 process data only to run the app. We may share information if the law requires it.</p>
+<h3>8. Keeping and deleting data</h3><p>Your data is kept while your account exists. You can delete your account in Settings, then Delete my account, or email us. Deleting your account removes your profile and login. Messages you already sent may stay visible to other people in the chat unless you delete them first ("Delete for everyone").</p>
+<h3>9. Children</h3><p>UK Love is not meant for children under 13. If you believe a child has joined, email us and we will remove the account.</p>
+<h3>10. Your choices</h3><p>Hide last seen, block or report users, delete messages, turn notifications off, or delete your account at any time.</p>
+<h3>11. Changes</h3><p>We may update this policy. The date at the top shows the latest version.</p>
+<h3>12. Contact</h3><p>Email: <a href="mailto:umardrazofficial12@gmail.com">umardrazofficial12@gmail.com</a></p>`,TERMS=`<p style="opacity:.7">Last updated: 8 November 2026</p>
+<h3>Using UK Love</h3><p>By using UK Love you agree to these terms. You must be at least 13 years old.</p>
+<h3>Be respectful</h3><p>Do not harass, threaten or scam others. Do not send illegal, hateful, sexual or violent content, or spam. Do not pretend to be someone else.</p>
+<h3>Your account</h3><p>You are responsible for your password and for what happens in your account. We may suspend or remove accounts that break these rules or after a report.</p>
+<h3>Your content</h3><p>You own what you send. You allow the app to store and deliver it to the people you send it to.</p>
+<h3>No guarantee</h3><p>The app is provided "as is". We try to keep it running but cannot promise it will always be available or error free.</p>
+<h3>Support</h3><p>Email <a href="mailto:umardrazofficial12@gmail.com">umardrazofficial12@gmail.com</a>.</p>`;
+function showDoc(title,html){const o=document.createElement('div');o.style.cssText='position:fixed;inset:0;z-index:90;background:#0a0410;color:#fff;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0)';
+  o.innerHTML='<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1.5px solid #ff2d9566;box-shadow:0 4px 18px rgba(255,45,149,.3)"><button type="button" class="dx" style="background:none;border:0;color:#fff;display:flex;width:40px;height:40px;align-items:center;justify-content:center"></button><b style="font-size:18px"></b></div><div class="dbody" style="flex:1;overflow-y:auto;padding:16px 18px calc(env(safe-area-inset-bottom,0px) + 24px);line-height:1.55;font-size:15px;user-select:text;-webkit-user-select:text"></div>';
+  o.querySelector('b').textContent=title;o.querySelector('.dx').innerHTML=I.back;o.querySelector('.dbody').innerHTML=html;
+  const f=()=>o.remove();pushLayer(f);o.querySelector('.dx').onclick=()=>{closeLayer(f);f()};document.body.appendChild(o)}
+async function delAcc(){const u=auth.currentUser;if(!u)return;if(!await dlg('Delete your account permanently? Your profile and login will be removed and this cannot be undone.',{confirm:1}))return;
+  try{if(u.email&&!u.email.endsWith('@ukloveapp.app')||u.email){const pw=await dlg('Enter your password to confirm',{input:1,pw:1});if(pw===null||pw===undefined||pw==='')return;await u.reauthenticateWithCredential(firebase.auth.EmailAuthProvider.credential(u.email,pw))}
+    try{await db.doc('users/'+me).delete()}catch(e){}
+    await u.delete();LS.d('uklast');LS.d('ukcache_'+me);LS.d('fp_'+me);location.reload()}
+  catch(e){alert(e&&(e.code==='auth/wrong-password'||e.code==='auth/invalid-credential')?'Wrong password.':'Could not delete the account. Log out, log in again and retry.')}}
+$('gpl').onclick=()=>showDoc('Privacy Policy',POLICY);
 let mr=null,ch=[],tm=null;
 $('mic').onclick=async()=>{if(mr){mr.stop();return}
   try{const st=await navigator.mediaDevices.getUserMedia({audio:true});mr=new MediaRecorder(st,{audioBitsPerSecond:24000});ch=[];
@@ -582,7 +678,7 @@ function startTimer(){if(ctStart)return;ctStart=Date.now();stopRing();if(callMet
 function stopTimer(){clearInterval(ctIv);ctIv=null;ctStart=0}
 const beep=()=>playTone(cfg.ring);
 const media=v=>navigator.mediaDevices.getUserMedia({audio:true,video:v?{facingMode:'user'}:false});
-function callUI(name,st,v){$('call').style.display='flex';$('cnn').textContent=name;$('cs').textContent=st;$('lv').style.display=v?'block':'none';$('lv').srcObject=ls;$('cm').innerHTML=I.mic;if($('cv'))$('cv').style.display=v?'none':''}
+function callUI(name,st,v,uid){$('call').style.display='flex';$('cnn').textContent=name;$('cs').textContent=st;$('lv').style.display=v?'block':'none';$('lv').srcObject=ls;$('cm').innerHTML=I.mic;if($('cv'))$('cv').style.display=v?'none':'';$('rv').classList.toggle('hid',!v);setAv($('cav'),(people[uid]||{}).photo,name);$('cav').style.display=v?'none':'flex'}
 async function addCand(c){const x=JSON.parse(c);if(pc&&pc.remoteDescription){try{await pc.addIceCandidate(x)}catch(e){}}else qc.push(x)}
 async function flush(){for(const c of qc){try{await pc.addIceCandidate(c)}catch(e){}}qc=[]}
 let rn=0,lastRe=0,spk=true;
@@ -594,7 +690,7 @@ function mkpc(c){
   cu.push(db.doc('calls/'+c).onSnapshot(async s=>{const d=s.data();if(!d||d.s!==cs||!pc)return;const r=d.re;
     if(r&&r.by!==me&&r.n!==lastRe&&pc.signalingState==='stable'&&pc.remoteDescription){lastRe=r.n;try{await pc.setRemoteDescription(r.offer);const a=await pc.createAnswer();await pc.setLocalDescription(a);await db.doc('calls/'+c).update({ra:{by:me,n:r.n,answer:{type:a.type,sdp:a.sdp}}})}catch(e){}}
     if(d.ra&&d.ra.by!==me&&d.ra.n===rn&&pc.signalingState==='have-local-offer'){rn=0;try{await pc.setRemoteDescription(d.ra.answer)}catch(e){}}}));ls.getTracks().forEach(t=>pc.addTrack(t,ls));
-  pc.ontrack=e=>{$('rv').srcObject=e.streams[0]};
+  pc.ontrack=e=>{const r=$('rv');r.srcObject=e.streams[0];const sh=()=>{r.classList.remove('hid');$('cav').style.display='none'};if(e.track.kind==='video'){sh();e.track.onunmute=sh}const pl=r.play();if(pl&&pl.catch)pl.catch(()=>{})};
   pc.oniceconnectionstatechange=()=>{if(pc&&['connected','completed'].includes(pc.iceConnectionState))startTimer()};
   pc.onicecandidate=e=>{if(e.candidate)db.collection('calls/'+c+'/cand').add({u:me,s:cs,c:JSON.stringify(e.candidate)}).catch(()=>{})};
   pc.onconnectionstatechange=()=>{if(!pc)return;if(pc.connectionState==='connected')startTimer();else if(pc.connectionState==='failed'){stopTimer();$('cs').textContent='Could not connect (network issue)'}};
@@ -602,10 +698,10 @@ function mkpc(c){
 async function startCall(v){
   if(!curId||pc||isG||inCall)return;if(blockedList().includes(curId)){alert('Unblock this contact to call.');return}const c=cur;cid2=c;cs=Date.now();callMeta={to:curId,v:!!v,t0:Date.now(),conn:false};inCall=true;holdBack();ensureAC();
   try{ls=await media(v)}catch(e){alert('Microphone or camera permission denied.');callMeta=null;inCall=false;closeLayer(callLayer);cid2='';return}
-  callUI($('title').textContent,'Calling…',v);startRing();mkpc(c);
+  callUI($('title').textContent,'Calling…',v,curId);startRing();mkpc(c);
   const o=await pc.createOffer();await pc.setLocalDescription(o);
   await db.doc('calls/'+c).set({from:me,to:curId,fn:myName||'Friend',video:!!v,state:'ringing',offer:{type:o.type,sdp:o.sdp},answer:null,s:cs,t:Date.now()});
-  push([curId],myName||'UK Love',v?'📹 Incoming video call':'📞 Incoming voice call',{priority:10,ttl:45});
+  {const pTo=curId,pTx=v?'📹 Incoming video call':'📞 Incoming voice call',ck='call_'+c;push([pTo],myName||'UK Love',pTx,{priority:10,cid:ck});let rp=0;const rpi=setInterval(()=>{if(!inCall||ctStart||++rp>6){clearInterval(rpi);return}push([pTo],myName||'UK Love',pTx,{priority:10,cid:ck})},6000)}
   cu.push(db.doc('calls/'+c).onSnapshot(async s=>{const d=s.data();if(!d||d.s!==cs||!pc)return;
     if(d.answer&&!pc.currentRemoteDescription){await pc.setRemoteDescription(d.answer);await flush();stopRing();if(!ctStart)$('cs').textContent='Connecting…'}
     if(d.state==='ended'||d.state==='rejected')endLocal(d.state==='rejected'?'Call rejected':'Call ended')}));
@@ -614,7 +710,7 @@ function showInc(id,d){inc={id,d};$('in').textContent=d.fn||'Friend';setAv($('in
 function hideInc(){clearInterval(ringIv);$('inc').style.display='none';inc=null}
 $('ia').onclick=async()=>{const {id,d}=inc;hideInc();cid2=id;cs=d.s;inCall=true;holdBack();
   try{ls=await media(d.video)}catch(e){alert('Microphone or camera permission denied.');inCall=false;closeLayer(callLayer);cid2='';db.doc('calls/'+id).update({state:'rejected'});return}
-  callUI(d.fn,'Connecting…',d.video);mkpc(id);
+  callUI(d.fn,'Connecting…',d.video,d.from);mkpc(id);
   await pc.setRemoteDescription(d.offer);await flush();const a=await pc.createAnswer();await pc.setLocalDescription(a);
   await db.doc('calls/'+id).update({answer:{type:a.type,sdp:a.sdp},state:'accepted'});
   cu.push(db.doc('calls/'+id).onSnapshot(s=>{const x=s.data();if(x&&x.s===cs&&x.state==='ended')endLocal('Call ended')}))};
@@ -655,7 +751,9 @@ function fwd(m){const b=$('mn');b.innerHTML='<div class="sheet"><b style="displa
 function dayLbl(t){const d=new Date(t),n=new Date(),y=new Date(Date.now()-864e5);return d.toDateString()===n.toDateString()?'Today':d.toDateString()===y.toDateString()?'Yesterday':d.toLocaleDateString([],{day:'numeric',month:'long',year:d.getFullYear()===n.getFullYear()?undefined:'numeric'})}
 let csStar=false;
 function csFilter(){const q=($('csq').value||'').trim().toLowerCase(),act=!!q||csStar;[...$('msgs').children].forEach(e=>{if(e.classList.contains('m')){const ok=(!q||e.textContent.toLowerCase().includes(q))&&(!csStar||e.dataset.st);e.style.display=!act||ok?'':'none'}else e.style.display=act?'none':''})}
-$('cS').innerHTML=I.search||'🔍';$('cS').onclick=()=>{const b=$('csb');b.hidden=!b.hidden;if(!b.hidden)$('csq').focus();else{$('csq').value='';csStar=false;$('csS').classList.remove('on');csFilter()}};
+Object.assign(I,{smile:sv('M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM8.5 8c.83 0 1.5.67 1.5 1.5S9.33 11 8.5 11 7 10.33 7 9.5 7.67 8 8.5 8zM12 17.5c-2.33 0-4.31-1.46-5.11-3.5h10.22c-.8 2.04-2.78 3.5-5.11 3.5zM15.5 11c-.83 0-1.5-.67-1.5-1.5S14.67 8 15.5 8s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z'),poll:sv('M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z'),search:sv('M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'),shield:sv('M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z'),mail:sv('M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z'),doc:sv('M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z'),info:sv('M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z')});
+const DONE1='<svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>',DONE2='<svg viewBox="0 0 24 24"><path d="M18 7l-1.41-1.41-6.34 6.34 1.41 1.41L18 7zm4.24-1.41L11.66 16.17 7.48 12l-1.41 1.41L11.66 19l12-12-1.42-1.41zM.41 13.41L6 19l1.41-1.41L1.83 12 .41 13.41z"/></svg>',CLK='<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/></svg>';
+$('cS').innerHTML=I.search;$('gal').innerHTML=I.img;$('pol').innerHTML=I.poll;$('emb').innerHTML=I.smile;$('cS').onclick=()=>{const b=$('csb');b.hidden=!b.hidden;if(!b.hidden)$('csq').focus();else{$('csq').value='';csStar=false;$('csS').classList.remove('on');csFilter()}};
 $('csq').oninput=csFilter;$('csS').onclick=()=>{csStar=!csStar;$('csS').classList.toggle('on',csStar);csFilter()};$('csx').onclick=()=>{$('csb').hidden=true;$('csq').value='';csStar=false;$('csS').classList.remove('on');csFilter()};
 {const E=Array.from('😀😃😄😁😆😅😂🤣😊😇🙂😉😍🥰😘😗😙😚😋😛😜🤪😎🤩🥳😏😒😞😔😟😕🙁😣😖😫😩🥺😢😭😤😠😡🤬🤯😳🥵🥶😱😨😰😥😓🤗🤔🤭🤫😶😐😑😬🙄😯😴🤤😪😵🤐🤢🤮🤧😷🤒🤕😈👿💀☠️💩🤡👻👽🤖❤️🧡💛💚💙💜🖤🤍💔❣️💕💞💓💗💖💘💝💟💋👍👎👌✌️🤞🤟🤘👏🙌🙏🤝💪👋🤙✋🖐️👀🔥✨⭐🌹🌸🌙☀️🎉🎂🎁🍕☕🥰');const g=$('emo');E.forEach(x=>{const b=document.createElement('button');b.type='button';b.textContent=x;b.onmousedown=ev=>ev.preventDefault();b.onclick=()=>{$('inp').value+=x;$('inp').focus()};g.appendChild(b)});$('emb').onmousedown=ev=>ev.preventDefault();$('emb').onclick=()=>{g.hidden=!g.hidden}}
 /* ---------- Show saved chat list instantly on open ---------- */
